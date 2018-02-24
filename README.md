@@ -5,4 +5,6 @@
 __pt-br:__	minhas aulas e atividades de Java ficar�o aqui ^-^  
 __en:__		my classes and activities with Java will be stored here ^-^
 
-__update.something("this think has webhook with a twow discord server now yay")__
+__update.something(
+			"this thing has webhook with a twow discord server now yay\n"+  
+			"...what now? ;-;");__
