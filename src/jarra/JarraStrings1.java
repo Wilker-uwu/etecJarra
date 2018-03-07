@@ -6,19 +6,19 @@ public class JarraStrings1 {
 		String xyz= new String("owo what's this");
 		
 				
-		if(str==xyz)		//compares addresses, not values (if "str" is at the same space as "xyz".)
+		if(str==xyz)				//compares addresses, not values (if "str" is at the same space as "xyz".)
 			System.out.println("owo equal");
 		else
 			System.out.println("lol different");
 		
-		System.out.println(); //skips a line
+		System.out.println();		//skips a line
 		
-		if(str.equals(xyz))	//compares strings (if the value in "str" is the same as the one in "xyz".)
+		if(str.equals(xyz))			//compares strings (if the value in "str" is the same as the one in "xyz".)
 			System.out.println("owo equal");
 		else
 			System.out.println("lol different");
 	
-		System.out.println("\n"); //skips two lines
+		System.out.println("\n");	//skips two lines
 		
 		String myString= "hello world";
 		System.out.println("string lenght:\t"	+myString.length()			); //prints the length of myString
