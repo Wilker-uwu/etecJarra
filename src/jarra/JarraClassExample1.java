@@ -1,6 +1,13 @@
 package jarra;
 
-public class CarExample {
+
+/*
+ *	CLASSES AND METHODS
+ *	BASICS;
+ */
+
+
+public class JarraClassExample1 {
 	public static void main(String[] args) {
 		
 		/* creating an example of a car */
