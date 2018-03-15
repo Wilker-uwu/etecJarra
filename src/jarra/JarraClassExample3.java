@@ -9,11 +9,20 @@ public class JarraClassExample3 {
 		physicalPerson.setName("dummy");
 		physicalPerson.setAddress("somewhere");
 		physicalPerson.setTelephone(727);
+		
 		physicalPerson.setEmail("example@domain");
+		physicalPerson.setDocRG("99.999.999-9");
 		
-		System.out.println(physicalPerson.getName());
-		
+		System.out.println("name:		"+physicalPerson.getName());
+		System.out.println("address:	"+physicalPerson.getAddress());
+		System.out.println("telephone:	"+physicalPerson.getTelephone());
+		System.out.println("email:		"+physicalPerson.getEmail());
+		System.out.println("");
+		System.out.println("RG:		"	 +physicalPerson.getDocRG());
+		System.out.println("CPF:		"+physicalPerson.getDocCPF());
+	
 	}
+	
 	
 }
 
