@@ -14,7 +14,7 @@ public class JarraClassExample2 {
 		Counter c = new Counter();
 		
 		  //uses the class Counter itself to print "count".
-		System.out.println(Counter.count);
+		System.out.println(Counter.getCount());
 		//"count" is initialized at zero. with no changes, it prints zero.
 		
 		
@@ -22,11 +22,11 @@ public class JarraClassExample2 {
 		//which increments "count" by 1
 		c.increment();
 				
-		System.out.println(Counter.count); //prints "count" in the class Counter itself
+		System.out.println(Counter.getCount()); //prints "count" in the class Counter itself
 		
 		
-		Counter.count++; //increments "count" in the class itself
-		System.out.println(c.count);
+		Counter.setCount(Counter.getCount() + 1); //increments "count" in the class itself
+		System.out.println(c.getCount());
 		
 	}
 
@@ -37,14 +37,22 @@ class Counter {
 	 //the value of the static attributes/variables are shared
 	//between all the instances of a class.
 	
-	static int count = 0; 
+	private static int count = 0; 
 	
 	 //it can be accessed directly via "Class.VarName" as long as
 	//it is marked as "static". otherwise, only instances can access it.
 	
 	
+	public static int getCount() {
+		return count;
+	}
+
+	public static void setCount(int count) {
+		Counter.count = count;
+	}
+
 	void increment() {
-		count++; //increments "count" by 1
+		setCount(getCount() + 1); //increments "count" by 1
 	}
 	
 }
