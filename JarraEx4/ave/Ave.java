@@ -1,13 +1,13 @@
 package ave;
 
 /* AVES */
-public class Ave {
+public class Ave extends animal.Animal {
 	
 	private int altura=0;
 	
-	void falar() {}
+	public void falar() {}
 	
-	void voar(int i) {
+	public void voar(int i) {
 		this.altura+=i;
 	}
 	

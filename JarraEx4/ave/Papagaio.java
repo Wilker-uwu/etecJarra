@@ -1,13 +1,13 @@
 package ave;
 
 /* AVES */
-class Papagaio {
+class Papagaio extends Ave {
 	
 	private String[] vocabulario=null;
 	
-	void falar() {}
+	public void falar() {}
 	
-	void setVocabulario(String[] argv) {
+	public void setVocabulario(String[] argv) {
 		
 		this.vocabulario=argv;
 		

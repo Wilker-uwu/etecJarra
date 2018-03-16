@@ -1,7 +1,7 @@
 package mamifero;
 
 /* MAMÍFEROS */
-class Cachorro {
+class Cachorro extends Mamifero {
 	
 	private boolean tipoLatido=false;
 	

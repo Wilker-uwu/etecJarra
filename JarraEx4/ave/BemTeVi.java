@@ -1,8 +1,8 @@
 package ave;
 
 /* AVES */
-class BemTeVi {
+class BemTeVi extends Ave {
 	
-	void falar() {};
+	public void falar() {};
 	
 }

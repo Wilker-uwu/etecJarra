@@ -1,7 +1,7 @@
 package mamifero;
 
 /* MAMÍFEROS*/
-public class Mamifero {
+public class Mamifero extends animal.Animal {
 	
 	private int Velocidade;
 	

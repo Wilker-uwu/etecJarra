@@ -1,7 +1,7 @@
 package mamifero;
 
 /* MAMÍFEROS */
-class Vaca {
+class Vaca extends Mamifero {
 	
 	private boolean permiteOrdenha = false;
 	
