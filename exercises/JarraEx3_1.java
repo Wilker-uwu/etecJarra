@@ -1,4 +1,4 @@
-package jarra;
+package jarraExercises;
 
 public class JarraEx3_1 {
 
