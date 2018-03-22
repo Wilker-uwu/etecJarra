@@ -1,4 +1,4 @@
-package jarraExercises;
+package jarraEx5;
 
 import java.util.Scanner;
 

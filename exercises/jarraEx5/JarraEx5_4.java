@@ -1,9 +1,9 @@
-package jarraExercises;
+package jarraEx5;
 
 import java.util.Scanner;
 
-//TODO fix (exiba números ímpares entre os valores que o usuário digitar)
-public class JarraEx5_2 {
+//TODO fix (exiba números pares entre os valores que o usuário digitar)
+public class JarraEx5_4 {
 
 	private static Scanner in;
 
@@ -16,17 +16,17 @@ public class JarraEx5_2 {
 		
 		if(num[0]>=num[1]) {
 			for(int i=num[0]; num[0]>=num[1]; i--) {
-				if(i%2 != 0) {
-					System.out.println(i + " é ímpar.");
+				if(i%2 == 0) {
+					System.out.println(i + " é par.");
 				}
 			}
 		} else {
 			for(int i=num[1]; num[1]>=num[0]; i--) {
-				if(i%2 != 0) {
-					System.out.println(i + " é ímpar.");
+				if(i%2 == 0) {
+					System.out.println(i + " é par.");
 				}
 			}
 		}
 	}
 
-}
+}//safdasdfadsfa

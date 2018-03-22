@@ -1,4 +1,4 @@
-package animal;
+package JarraEx4.animal;
 
 public class Animal {
 	

@@ -1,4 +1,4 @@
-package mamifero;
+package JarraEx4.mamifero;
 
 /* MAMÍFEROS */
 class Vaca extends Mamifero {

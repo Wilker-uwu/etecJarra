@@ -1,5 +1,3 @@
-package jarraExercises;
-
 public class JarraEx3_1 {
 
 	public static void main(String[] args) {

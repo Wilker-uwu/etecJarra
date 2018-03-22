@@ -1,5 +1,3 @@
-package jarraExercises;
-
 public class JarraEx2_1 {
 	public static void main(String[] args) {
 		String str[]= { "Curso de Java", " - Exemplo String" };

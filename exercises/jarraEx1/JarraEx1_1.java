@@ -1,4 +1,4 @@
-package jarraExercises;
+package jarraEx1;
 
 public class JarraEx1_1 {
 	public static void main(String args[]) {
