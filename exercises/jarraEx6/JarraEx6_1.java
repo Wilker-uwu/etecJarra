@@ -2,6 +2,7 @@ package jarraEx6;
 
 import java.awt.Container;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -29,6 +30,12 @@ public class JarraEx6_1 extends JFrame{
 	JTextField	txtCPhone	= new JTextField();
 	JTextField	txtEmail	= new JTextField();
 	
+	//sets up buttons
+	JButton		btnConfirm	= new JButton("confirm");
+	JButton		btnClear	= new JButton("clear");
+	JButton		btnCancel	= new JButton("cancel");
+	
+	
 	public JarraEx6_1() {
 		
 		super("Window name");
@@ -38,7 +45,11 @@ public class JarraEx6_1 extends JFrame{
 		int g=22,
 			alt=22,
 			minlbl=g*2,
-			mintxt=minlbl+g*4; //grid
+			mintxt=minlbl+g*4,
+			btnW=g*4,
+			
+			wWidth=380,
+			wHeight=460; //grid
 		
 		
 		//sets up label container positions
@@ -50,6 +61,18 @@ public class JarraEx6_1 extends JFrame{
 		lblPhone.setBounds		(minlbl, g*7, g*4, alt);
 		lblCPhone.setBounds		(minlbl, g*8, g*4, alt);
 		lblEmail.setBounds		(minlbl, g*9, g*4, alt);
+		//sets up text box positions
+		txtName.setBounds		(mintxt, g*3, g*9, alt);
+		txtAddress.setBounds	(mintxt, g*4, g*9, alt);
+		txtDistrict.setBounds	(mintxt, g*5, g*9, alt);
+		txtState.setBounds		(mintxt, g*6, g*9, alt);
+		txtPhone.setBounds		(mintxt, g*7, g*9, alt);
+		txtCPhone.setBounds		(mintxt, g*8, g*9, alt);
+		txtEmail.setBounds		(mintxt, g*9, g*9, alt);
+		//sets up buttons
+		btnConfirm.setBounds	(wWidth/2-(btnW/2), g*12, btnW, alt);
+		btnClear.setBounds		(wWidth/2-(btnW/2), g*13, btnW, alt);
+		btnCancel.setBounds		(wWidth/2-(btnW/2), g*14, btnW, alt);
 		
 		//draws label containers
 		pane.add(lblTitle);
@@ -60,15 +83,7 @@ public class JarraEx6_1 extends JFrame{
 		pane.add(lblPhone);
 		pane.add(lblCPhone);
 		pane.add(lblEmail);
-		
-		txtName.setBounds		(mintxt, g*3, g*9, alt);
-		txtAddress.setBounds	(mintxt, g*4, g*9, alt);
-		txtDistrict.setBounds	(mintxt, g*5, g*9, alt);
-		txtState.setBounds		(mintxt, g*6, g*9, alt);
-		txtPhone.setBounds		(mintxt, g*7, g*9, alt);
-		txtCPhone.setBounds		(mintxt, g*8, g*9, alt);
-		txtEmail.setBounds		(mintxt, g*9, g*9, alt);
-		
+		//draws text boxes
 		pane.add(txtName);
 		pane.add(txtAddress);
 		pane.add(txtDistrict);
@@ -76,10 +91,14 @@ public class JarraEx6_1 extends JFrame{
 		pane.add(txtPhone);
 		pane.add(txtCPhone);
 		pane.add(txtEmail);
+		//draws buttons
+		pane.add(btnConfirm);
+		pane.add(btnClear);
+		pane.add(btnCancel);
 		
-		this.setVisible(true);		  //makes the window visible
-		this.setSize(380, 460);		 //window size
-		this.setLocation(520, 325); //window location
+		this.setVisible(true);			  //makes the window visible
+		this.setSize(wWidth, wHeight);	 //window size and
+		this.setLocation(520, 325);		//location
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //ends javaw.exe on close
 	}
