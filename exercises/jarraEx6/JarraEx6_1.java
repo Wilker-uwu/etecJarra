@@ -42,14 +42,14 @@ public class JarraEx6_1 extends JFrame{
 		
 		Container	pane = this.getContentPane();
 		pane.setLayout(null);
-		int g=22,
+		int g=22, //grid
 			alt=22,
 			minlbl=g*2,
 			mintxt=minlbl+g*4,
 			btnW=g*4,
 			
 			wWidth=380,
-			wHeight=460; //grid
+			wHeight=460;
 		
 		
 		//sets up label container positions
