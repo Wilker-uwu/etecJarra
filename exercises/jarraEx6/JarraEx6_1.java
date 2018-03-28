@@ -71,8 +71,8 @@ public class JarraEx6_1 extends JFrame{
 		txtEmail.setBounds		(mintxt, g*9, g*9, alt);
 		//sets up buttons
 		btnConfirm.setBounds	(wWidth/2-(btnW/2), g*12, btnW, alt);
-		btnClear.setBounds		(wWidth/2-(btnW/2), g*13, btnW, alt);
-		btnCancel.setBounds		(wWidth/2-(btnW/2), g*14, btnW, alt);
+		btnClear.setBounds		(wWidth/2-(btnW/2), (int) (g*13.2), btnW, alt);
+		btnCancel.setBounds		(wWidth/2-(btnW/2), (int) (g*14.4), btnW, alt);
 		
 		//draws label containers
 		pane.add(lblTitle);
@@ -83,6 +83,7 @@ public class JarraEx6_1 extends JFrame{
 		pane.add(lblPhone);
 		pane.add(lblCPhone);
 		pane.add(lblEmail);
+		
 		//draws text boxes
 		pane.add(txtName);
 		pane.add(txtAddress);
@@ -91,6 +92,7 @@ public class JarraEx6_1 extends JFrame{
 		pane.add(txtPhone);
 		pane.add(txtCPhone);
 		pane.add(txtEmail);
+		
 		//draws buttons
 		pane.add(btnConfirm);
 		pane.add(btnClear);
