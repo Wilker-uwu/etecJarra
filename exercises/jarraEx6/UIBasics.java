@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class JarraEx6_1 extends JFrame{
+public class UIBasics extends JFrame{
 	
 	private static final long serialVersionUID = 5557095595470639847L;
 	
@@ -36,7 +36,7 @@ public class JarraEx6_1 extends JFrame{
 	JButton		btnCancel	= new JButton("cancel");
 	
 	
-	public JarraEx6_1() {
+	public UIBasics() {
 		
 		super("Window name");
 		
@@ -107,7 +107,7 @@ public class JarraEx6_1 extends JFrame{
 
 	public static void main(String[] args) {
 		
-		JarraEx6_1 window = new JarraEx6_1();
+		UIBasics window = new UIBasics();
 		
 	}
 

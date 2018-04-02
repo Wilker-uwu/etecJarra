@@ -1,13 +1,11 @@
 package jarraEx7;
 
 import java.awt.Container;
-import java.awt.Font;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
-public class Calc extends JFrame{
+public class UICalc extends JFrame{
 	
 	//TODO comment buttons
 	JTextField	txtOutput = new JTextField("0");
@@ -25,6 +23,7 @@ public class Calc extends JFrame{
 				btnSQRT	= new JButton("√"),
 				
 				btnDiv	= new JButton("/"),
+				btnMul	= new JButton("*"),
 				btnPer	= new JButton("%"),
 				btnFra	= new JButton("1/x"),
 				btnSum	= new JButton("+"),
@@ -45,7 +44,7 @@ public class Calc extends JFrame{
 				
 	
 	
-	public Calc() {
+	public UICalc() {
 		super("Calculator");
 		
 		Container pane = this.getContentPane();
@@ -53,7 +52,7 @@ public class Calc extends JFrame{
 		
 		
 		int wWidth	= 220,
-			wHeight = 286,
+			wHeight = 312,
 			
 			gW		= 8,
 			gH		= 8,
@@ -64,24 +63,36 @@ public class Calc extends JFrame{
 		
 		txtOutput.setBounds(gW,gH, wWidth-(gW*3), gH*8);
 		
-		btnMC.setBounds		(gW*1, gH*10, btnW, btnH);
-		btnMR.setBounds		(gW*6, gH*10, btnW, btnH);
-		btnMS.setBounds		(gW*11, gH*10, btnW, btnH);
-		btnMP.setBounds		(gW*16, gH*10, btnW, btnH);
-		btnMM.setBounds		(gW*21, gH*10, btnW, btnH);
+		btnMC.setBounds		(gW*1,	gH*10, btnW, btnH);
+		btnMR.setBounds		(gW*6,	gH*10, btnW, btnH);
+		btnMS.setBounds		(gW*11,	gH*10, btnW, btnH);
+		btnMP.setBounds		(gW*16,	gH*10, btnW, btnH);
+		btnMM.setBounds		(gW*21,	gH*10, btnW, btnH);
 		
-		btnBks.setBounds	(gW*1, gH*14, btnW, btnH);
-		btnCE.setBounds		(gW*6, gH*14, btnW, btnH);
-		btnCls.setBounds	(gW*11, gH*14, btnW, btnH);
-		btnPN.setBounds		(gW*16, gH*14, btnW, btnH);
-		btnSQRT.setBounds	(gW*21, gH*14, btnW, btnH);
+		btnBks.setBounds	(gW*1,	gH*14, btnW, btnH);
+		btnCE.setBounds		(gW*6,	gH*14, btnW, btnH);
+		btnCls.setBounds	(gW*11,	gH*14, btnW, btnH);
+		btnPN.setBounds		(gW*16,	gH*14, btnW, btnH);
+		btnSQRT.setBounds	(gW*21,	gH*14, btnW, btnH);
 		
 		//TODO make other buttons
-		btnBks.setBounds	(gW*1, gH*14, btnW, btnH);
-		btnCE.setBounds		(gW*6, gH*14, btnW, btnH);
-		btnCls.setBounds	(gW*11, gH*14, btnW, btnH);
-		btnPN.setBounds		(gW*16, gH*14, btnW, btnH);
-		btnSQRT.setBounds	(gW*21, gH*14, btnW, btnH);
+		btn7.setBounds		(gW*1,	gH*18, btnW, btnH);
+		btn8.setBounds		(gW*6,	gH*18, btnW, btnH);
+		btn9.setBounds		(gW*11,	gH*18, btnW, btnH);
+		btnDiv.setBounds	(gW*16,	gH*18, btnW, btnH);
+		btnPer.setBounds	(gW*21,	gH*18, btnW, btnH);
+		
+		btn4.setBounds		(gW*1,	gH*22, btnW, btnH);
+		btn5.setBounds		(gW*6,	gH*22, btnW, btnH);
+		btn6.setBounds		(gW*11,	gH*22, btnW, btnH);
+		btnMul.setBounds	(gW*16,	gH*22, btnW, btnH);
+		btnFra.setBounds	(gW*21,	gH*22, btnW, btnH);
+		
+		btn1.setBounds		(gW*1,	gH*26, btnW, btnH);
+		btn2.setBounds		(gW*6,	gH*26, btnW, btnH);
+		btn3.setBounds		(gW*11,	gH*26, btnW, btnH);
+		btnSub.setBounds	(gW*16,	gH*26, btnW, btnH);
+		btnEq.setBounds		(gW*21,	gH*26, btnW, btnH*2+gW);
 		
 		
 		this.setVisible(true);			  //makes the window visible
@@ -104,13 +115,28 @@ public class Calc extends JFrame{
 		pane.add(btnCls);
 		pane.add(btnPN);
 		pane.add(btnSQRT);
+		pane.add(btn7);
+		pane.add(btn8);
+		pane.add(btn9);
+		pane.add(btnDiv);
+		pane.add(btnPer);
+		pane.add(btn4);
+		pane.add(btn5);
+		pane.add(btn6);
+		pane.add(btnMul);
+		pane.add(btnFra);
+		pane.add(btn1);
+		pane.add(btn2);
+		pane.add(btn3);
+		pane.add(btnSub);
+		pane.add(btnEq);
 		
 	}
 	
 	
 	
 	public static void main(String[] args) {
-		Calc window = new Calc();
+		UICalc window = new UICalc();
 	}
 
 }
