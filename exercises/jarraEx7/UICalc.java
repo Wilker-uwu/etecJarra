@@ -1,6 +1,7 @@
 package jarraEx7;
 
 import java.awt.Container;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -43,7 +44,8 @@ public class UICalc extends JFrame{
 				btn7	= new JButton("7"),
 				btn8	= new JButton("8"),
 				btn9	= new JButton("9");
-				
+	
+	
 	
 	
 	public UICalc() {
@@ -61,6 +63,8 @@ public class UICalc extends JFrame{
 			
 			btnW	= 32,
 			btnH	= 26;
+		
+		float[] val= {0,0};
 		
 		
 		//sets up locations
@@ -101,10 +105,38 @@ public class UICalc extends JFrame{
 		btnSum.setBounds	(gW*16,	gH*30, btnW, btnH);
 		
 		
-		btnMC.addActionListener(new ActionListener() {
-			
-		} 
-		);
+		btn8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				
+				if(txtOutput.getText().equals("0")) {
+					
+					txtOutput.setText("8");
+					
+				} else {
+					
+					txtOutput.setText(txtOutput.getText() + 8);
+					
+				};
+			}
+		});
+		
+		//TODO Aflhqadsfkjhdsaflkjhadslkjfkjhadslkjfawsedfwfasdçljfalkjsedçlkfaçlkjewfçlkjadsçlkjfçlkjdsaflkjdsaflkjçadfsçlkadsçlkfa\sd
+		btnSum.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				
+				if(val[0] == 0) {
+					val[0]=Float.parseDouble(txtOutput.getText());
+					
+				} else if (val[1] == 0) {
+					val[1]=Double.parseDouble(txtOutput.getText());
+					
+				} else {
+					txtOutput.setText(Func.sum(val[0],val[1]) + "");
+					
+				}
+				
+			}
+		});
 		
 		
 		
