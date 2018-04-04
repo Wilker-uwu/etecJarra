@@ -1,6 +1,8 @@
 package jarraEx7;
 
 import java.awt.Container;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -50,7 +52,7 @@ public class UICalc extends JFrame{
 		Container pane = this.getContentPane();
 		pane.setLayout(null);
 		
-		
+		//sets up the grid
 		int wWidth	= 220,
 			wHeight = 312,
 			
@@ -61,6 +63,7 @@ public class UICalc extends JFrame{
 			btnH	= 26;
 		
 		
+		//sets up locations
 		txtOutput.setBounds(gW,gH, wWidth-(gW*3), gH*8);
 		
 		btnMC.setBounds		(gW*1,	gH*10, btnW, btnH);
@@ -75,7 +78,6 @@ public class UICalc extends JFrame{
 		btnPN.setBounds		(gW*16,	gH*14, btnW, btnH);
 		btnSQRT.setBounds	(gW*21,	gH*14, btnW, btnH);
 		
-		//TODO make other buttons
 		btn7.setBounds		(gW*1,	gH*18, btnW, btnH);
 		btn8.setBounds		(gW*6,	gH*18, btnW, btnH);
 		btn9.setBounds		(gW*11,	gH*18, btnW, btnH);
@@ -94,6 +96,17 @@ public class UICalc extends JFrame{
 		btnSub.setBounds	(gW*16,	gH*26, btnW, btnH);
 		btnEq.setBounds		(gW*21,	gH*26, btnW, btnH*2+gW);
 		
+		btn0.setBounds		(gW*1,	gH*30, btnW*2+gW, btnH);
+		btnDec.setBounds	(gW*11,	gH*30, btnW, btnH);
+		btnSum.setBounds	(gW*16,	gH*30, btnW, btnH);
+		
+		
+		btnMC.addActionListener(new ActionListener() {
+			
+		} 
+		);
+		
+		
 		
 		this.setVisible(true);			  //makes the window visible
 		this.setSize(wWidth, wHeight);	 //window size and
@@ -103,7 +116,6 @@ public class UICalc extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //ends javaw.exe on close
 		
 		//draws buttons
-		//TODO add other buttons
 		pane.add(txtOutput);
 		pane.add(btnMC);
 		pane.add(btnMR);
@@ -130,6 +142,9 @@ public class UICalc extends JFrame{
 		pane.add(btn3);
 		pane.add(btnSub);
 		pane.add(btnEq);
+		pane.add(btn0);
+		pane.add(btnDec);
+		pane.add(btnSum);
 		
 	}
 	
