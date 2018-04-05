@@ -10,22 +10,21 @@ import javax.swing.JTextField;
 
 public class UICalc extends JFrame{
 	
-	//TODO comment buttons
 	JTextField	txtOutput = new JTextField("0");
 	
-	JButton		btnMC	= new JButton("MC"),
+	JButton		btnMC	= new JButton("MC"), //first row
 				btnMR	= new JButton("MR"),
 				btnMS	= new JButton("MS"),
 				btnMP	= new JButton("M+"),
 				btnMM	= new JButton("M-"),
 		
-				btnBks	= new JButton("←"),
+				btnBks	= new JButton("←"),	//second row
 				btnCE	= new JButton("CE"),
 				btnCls	= new JButton("C"),
 				btnPN	= new JButton("±"),
 				btnSQRT	= new JButton("√"),
 				
-				btnDiv	= new JButton("/"),
+				btnDiv	= new JButton("/"),	//other functions
 				btnMul	= new JButton("*"),
 				btnPer	= new JButton("%"),
 				btnFra	= new JButton("1/x"),
@@ -34,7 +33,7 @@ public class UICalc extends JFrame{
 				btnEq	= new JButton("="),
 				btnDec	= new JButton(","),
 				
-				btn0	= new JButton("0"),
+				btn0	= new JButton("0"), //number buttons
 				btn1	= new JButton("1"),
 				btn2	= new JButton("2"),
 				btn3	= new JButton("3"),
@@ -45,14 +44,16 @@ public class UICalc extends JFrame{
 				btn8	= new JButton("8"),
 				btn9	= new JButton("9");
 	
-	
-	
+	boolean		funPressed	= false;	  //if a function button was pressed
+	char		funType		= '0';		 //which function was selected
+	double[]	val			= {0,0};	//numbers to calculate
 	
 	public UICalc() {
 		super("Calculator");
 		
 		Container pane = this.getContentPane();
 		pane.setLayout(null);
+		
 		
 		//sets up the grid
 		int wWidth	= 220,
@@ -63,8 +64,6 @@ public class UICalc extends JFrame{
 			
 			btnW	= 32,
 			btnH	= 26;
-		
-		float[] val= {0,0};
 		
 		
 		//sets up locations
@@ -104,11 +103,169 @@ public class UICalc extends JFrame{
 		btnDec.setBounds	(gW*11,	gH*30, btnW, btnH);
 		btnSum.setBounds	(gW*16,	gH*30, btnW, btnH);
 		
+		btn0.setBorder(null);
+		btn1.setBorder(null);
+		btn2.setBorder(null);
+		btn3.setBorder(null);
+		btn4.setBorder(null);
+		btn5.setBorder(null);
+		btn6.setBorder(null);
+		btn7.setBorder(null);
+		btn8.setBorder(null);
+		btn9.setBorder(null);
+		
+		btnSum.setBorder(null);
+		btnSub.setBorder(null);
+		btnEq.setBorder(null);
+		
+		btn0.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				
+				if(txtOutput.getText().equals("0") || funPressed) {
+					
+					txtOutput.setText("0");
+					
+				} else {
+					
+					txtOutput.setText(txtOutput.getText() + 0);
+					
+				};
+				
+				System.out.println(event);
+				funPressed=false;
+			}
+		});
+		
+		btn1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				
+				if(txtOutput.getText().equals("0") || funPressed) {
+					
+					txtOutput.setText("1");
+					
+				} else {
+					
+					txtOutput.setText(txtOutput.getText() + 1);
+					
+				};
+
+				System.out.println(event);
+				funPressed=false;
+			}
+		});
+		
+		btn2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				
+				if(txtOutput.getText().equals("0") || funPressed) {
+					
+					txtOutput.setText("2");
+					
+				} else {
+					
+					txtOutput.setText(txtOutput.getText() + 2);
+					
+				};
+				
+				System.out.println(event);
+				funPressed=false;
+			}
+		});
+		
+		btn3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				
+				if(txtOutput.getText().equals("0") || funPressed) {
+					
+					txtOutput.setText("3");
+					
+				} else {
+					
+					txtOutput.setText(txtOutput.getText() + 3);
+					
+				};
+				
+				System.out.println(event);
+				funPressed=false;
+			}
+		});
+		
+		btn4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				
+				if(txtOutput.getText().equals("0") || funPressed) {
+					
+					txtOutput.setText("4");
+					
+				} else {
+					
+					txtOutput.setText(txtOutput.getText() + 4);
+					
+				};
+				
+				System.out.println(event);
+				funPressed=false;
+			}
+		});
+		
+		btn5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				
+				if(txtOutput.getText().equals("0") || funPressed) {
+					
+					txtOutput.setText("5");
+					
+				} else {
+					
+					txtOutput.setText(txtOutput.getText() + 5);
+					
+				};
+				
+				System.out.println(event);
+				funPressed=false;
+			}
+		});
+		
+		btn6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				
+				if(txtOutput.getText().equals("0") || funPressed) {
+					
+					txtOutput.setText("6");
+					
+				} else {
+					
+					txtOutput.setText(txtOutput.getText() + 6);
+					
+				};
+				
+				System.out.println(event);
+				funPressed=false;
+			}
+		});
+		
+		btn7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				
+				if(txtOutput.getText().equals("0") || funPressed) {
+					
+					txtOutput.setText("7");
+					
+				} else {
+					
+					txtOutput.setText(txtOutput.getText() + 7);
+					
+				};
+				
+				System.out.println(event);
+				funPressed=false;
+			}
+		});
 		
 		btn8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				
-				if(txtOutput.getText().equals("0")) {
+				if(txtOutput.getText().equals("0") || funPressed) {
 					
 					txtOutput.setText("8");
 					
@@ -117,24 +274,114 @@ public class UICalc extends JFrame{
 					txtOutput.setText(txtOutput.getText() + 8);
 					
 				};
+				
+				System.out.println(event);
+				funPressed=false;
 			}
 		});
 		
-		//TODO Aflhqadsfkjhdsaflkjhadslkjfkjhadslkjfawsedfwfasdçljfalkjsedçlkfaçlkjewfçlkjadsçlkjfçlkjdsaflkjdsaflkjçadfsçlkadsçlkfa\sd
+		btn9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				
+				if(txtOutput.getText().equals("0") || funPressed) {
+					
+					txtOutput.setText("9");
+					
+				} else {
+					
+					txtOutput.setText(txtOutput.getText() + 9);
+					
+				};
+				
+				System.out.println(event);
+				funPressed=false;
+			}
+		});
+		
 		btnSum.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				
 				if(val[0] == 0) {
-					val[0]=Float.parseDouble(txtOutput.getText());
+					val[0]=Double.parseDouble(txtOutput.getText());
+					
+					System.out.println(event + "\n\tpressed +: val[0] = " + val[0]);
+					
 					
 				} else if (val[1] == 0) {
 					val[1]=Double.parseDouble(txtOutput.getText());
 					
-				} else {
-					txtOutput.setText(Func.sum(val[0],val[1]) + "");
+					System.out.println(event + "\n\tpressed +: val[1] = " + val[1]);
+					
+					txtOutput.setText(Func.equals(val[0],val[1],'+') + "");
+					System.out.println(
+							event + 
+							"\n\tpressed +:\n\t\t" +
+							val[0] + " +\n\t\t" +
+							val[1] + " =\n\t\t" +
+							txtOutput.getText()
+					);
+					
+					val[0] = 0;
+					val[1] = 0;
+					
 					
 				}
 				
+				funPressed=true;
+				funType='+';
+			}
+		});
+		
+		btnSub.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				
+				if(val[0] == 0) {
+					val[0]=Double.parseDouble(txtOutput.getText());
+					
+					System.out.println(event + "\n\tpressed -: val[0] = " + val[0]);
+					
+					
+				} else if (val[1] == 0) {
+					val[1]=Double.parseDouble(txtOutput.getText());
+					
+					System.out.println(event + "\n\tpressed +: val[1] = " + val[1]);
+					
+					txtOutput.setText(Func.equals(val[0],val[1],'-') + "");
+					System.out.println(
+							event + 
+							"\n\tpressed -:\n\t\t" +
+							val[0] + " -\n\t\t" +
+							val[1] + " =\n\t\t" +
+							txtOutput.getText()
+					);
+					
+					val[0] = 0;
+					val[1] = 0;
+					
+					
+				}
+				
+				funPressed=true;
+				funType='-';
+			}
+		});
+		
+		btnEq.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				val[1]=Double.parseDouble(txtOutput.getText());
+				txtOutput.setText(Func.equals(val[0],val[1],funType) + "");
+				
+				System.out.println(
+						event + 
+						"\n\tpressed =:\n\t\t" +
+						val[0] + " " + funType + "\n\t\t" +
+						val[1] + " =\n\t\t" +
+						txtOutput.getText()
+				);
+				
+				funPressed=true;
+				val[0] = 0;
+				val[1] = 0;
 			}
 		});
 		
@@ -182,6 +429,7 @@ public class UICalc extends JFrame{
 	
 	
 	
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		UICalc window = new UICalc();
 	}
