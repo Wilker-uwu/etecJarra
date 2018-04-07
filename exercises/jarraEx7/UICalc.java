@@ -67,7 +67,7 @@ public class UICalc extends JFrame{
 		
 		
 		//sets up locations
-		txtOutput.setBounds(gW,gH, wWidth-(gW*3), gH*8);
+		txtOutput.setBounds	(gW,gH, wWidth-(gW*3), gH*8);
 		
 		btnMC.setBounds		(gW*1,	gH*10, btnW, btnH);
 		btnMR.setBounds		(gW*6,	gH*10, btnW, btnH);
@@ -116,6 +116,8 @@ public class UICalc extends JFrame{
 		
 		btnSum.setBorder(null);
 		btnSub.setBorder(null);
+		btnMul.setBorder(null);
+		btnDiv.setBorder(null);
 		btnEq.setBorder(null);
 		
 		btn0.addActionListener(new ActionListener() {
@@ -135,7 +137,6 @@ public class UICalc extends JFrame{
 				funPressed=false;
 			}
 		});
-		
 		btn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				
@@ -153,7 +154,6 @@ public class UICalc extends JFrame{
 				funPressed=false;
 			}
 		});
-		
 		btn2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				
@@ -171,7 +171,6 @@ public class UICalc extends JFrame{
 				funPressed=false;
 			}
 		});
-		
 		btn3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				
@@ -189,7 +188,6 @@ public class UICalc extends JFrame{
 				funPressed=false;
 			}
 		});
-		
 		btn4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				
@@ -207,7 +205,6 @@ public class UICalc extends JFrame{
 				funPressed=false;
 			}
 		});
-		
 		btn5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				
@@ -225,7 +222,6 @@ public class UICalc extends JFrame{
 				funPressed=false;
 			}
 		});
-		
 		btn6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				
@@ -243,7 +239,6 @@ public class UICalc extends JFrame{
 				funPressed=false;
 			}
 		});
-		
 		btn7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				
@@ -261,7 +256,6 @@ public class UICalc extends JFrame{
 				funPressed=false;
 			}
 		});
-		
 		btn8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				
@@ -279,7 +273,6 @@ public class UICalc extends JFrame{
 				funPressed=false;
 			}
 		});
-		
 		btn9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				
@@ -331,8 +324,8 @@ public class UICalc extends JFrame{
 				funType='+';
 			}
 		});
-		
 		btnSub.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent event) {
 				
 				if(val[0] == 0) {
@@ -344,7 +337,7 @@ public class UICalc extends JFrame{
 				} else if (val[1] == 0) {
 					val[1]=Double.parseDouble(txtOutput.getText());
 					
-					System.out.println(event + "\n\tpressed +: val[1] = " + val[1]);
+					System.out.println(event + "\n\tpressed -: val[1] = " + val[1]);
 					
 					txtOutput.setText(Func.equals(val[0],val[1],'-') + "");
 					System.out.println(
@@ -365,6 +358,74 @@ public class UICalc extends JFrame{
 				funType='-';
 			}
 		});
+		btnMul.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent event) {
+				
+				if(val[0] == 0) {
+					val[0]=Double.parseDouble(txtOutput.getText());
+					
+					System.out.println(event + "\n\tpressed *: val[0] = " + val[0]);
+					
+					
+				} else if (val[1] == 0) {
+					val[1]=Double.parseDouble(txtOutput.getText());
+					
+					System.out.println(event + "\n\tpressed *: val[1] = " + val[1]);
+					
+					txtOutput.setText(Func.equals(val[0],val[1],'*') + "");
+					System.out.println(
+							event + 
+							"\n\tpressed *:\n\t\t" +
+							val[0] + " *\n\t\t" +
+							val[1] + " =\n\t\t" +
+							txtOutput.getText()
+					);
+					
+					val[0] = 0;
+					val[1] = 0;
+					
+					
+				}
+				
+				funPressed=true;
+				funType='*';
+			}
+		}); 
+		btnDiv.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent event) {
+				
+				if(val[0] == 0) {
+					val[0]=Double.parseDouble(txtOutput.getText());
+					
+					System.out.println(event + "\n\tpressed /: val[0] = " + val[0]);
+					
+					
+				} else if (val[1] == 0) {
+					val[1]=Double.parseDouble(txtOutput.getText());
+					
+					System.out.println(event + "\n\tpressed /: val[1] = " + val[1]);
+					
+					txtOutput.setText(Func.equals(val[0],val[1],'/') + "");
+					System.out.println(
+							event + 
+							"\n\tpressed /:\n\t\t" +
+							val[0] + " /\n\t\t" +
+							val[1] + " =\n\t\t" +
+							txtOutput.getText()
+					);
+					
+					val[0] = 0;
+					val[1] = 0;
+					
+					
+				}
+				
+				funPressed=true;
+				funType='/';
+			}
+		});  
 		
 		btnEq.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
@@ -426,8 +487,6 @@ public class UICalc extends JFrame{
 		pane.add(btnSum);
 		
 	}
-	
-	
 	
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
