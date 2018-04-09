@@ -22,14 +22,14 @@ public class UICalc extends JFrame{
 		
 				btnBks	= new JButton("←"),	//second row
 				btnCE	= new JButton("CE"),
-				btnCls	= new JButton("C"),
+				btnC	= new JButton("C"),
 				btnNeg	= new JButton("±"),
-				btnSQRT	= new JButton("√"),
+				btnSqrt	= new JButton("√"),
 				
 				btnDiv	= new JButton("/"),	//other functions
 				btnMul	= new JButton("*"),
 				btnPer	= new JButton("%"),
-				btnFra	= new JButton("1/x"),
+				btnRec	= new JButton("1/x"),
 				btnSum	= new JButton("+"),
 				btnSub	= new JButton("-"),
 				btnEq	= new JButton("="),
@@ -46,16 +46,16 @@ public class UICalc extends JFrame{
 				btn8	= new JButton("8"),
 				btn9	= new JButton("9");
 	
-	boolean		funPressed	= false;	  //if a function button was pressed
-	char		funType		= '0';		 //which function was selected
-	double[]	val			= {0,0};	//numbers to calculate
-	
+	boolean		funPressed	= false;	   //if a function button was pressed
+	char		funType		= '0';		  //which function was selected
+	double[]	val			= {0,0};	 //numbers to calculate
+	double		memory		= 0;		//number to memorize
+			
 	public UICalc() {
 		super("Calculator");
 		
 		Container pane = this.getContentPane();
 		pane.setLayout(null);
-		pane.setBackground(new Color(186,186,223));
 		
 		
 		//sets up the grid
@@ -67,7 +67,10 @@ public class UICalc extends JFrame{
 			
 			wWidth	= btnW*5+gW*7,
 			wHeight = btnH*8+gH*11;
-		Color buttonsNumbers = new Color(232,186,232);
+		
+		Color	buttonsNumbers	= new Color(232,200,232),
+				buttonsMemory	= new Color(190,190,232),
+				bgColor			= new Color(186,255,223);
 		
 		
 		//sets up locations
@@ -81,9 +84,9 @@ public class UICalc extends JFrame{
 		
 		btnBks.setBounds	(gW*1,	gH*13, btnW, btnH);
 		btnCE.setBounds		(gW*6,	gH*13, btnW, btnH);
-		btnCls.setBounds	(gW*11,	gH*13, btnW, btnH);
+		btnC.setBounds		(gW*11,	gH*13, btnW, btnH);
 		btnNeg.setBounds	(gW*16,	gH*13, btnW, btnH);
-		btnSQRT.setBounds	(gW*21,	gH*13, btnW, btnH);
+		btnSqrt.setBounds	(gW*21,	gH*13, btnW, btnH);
 		
 		btn7.setBounds		(gW*1,	gH*17, btnW, btnH);
 		btn8.setBounds		(gW*6,	gH*17, btnW, btnH);
@@ -95,7 +98,7 @@ public class UICalc extends JFrame{
 		btn5.setBounds		(gW*6,	gH*21, btnW, btnH);
 		btn6.setBounds		(gW*11,	gH*21, btnW, btnH);
 		btnMul.setBounds	(gW*16,	gH*21, btnW, btnH);
-		btnFra.setBounds	(gW*21,	gH*21, btnW, btnH);
+		btnRec.setBounds	(gW*21,	gH*21, btnW, btnH);
 		
 		btn1.setBounds		(gW*1,	gH*25, btnW, btnH);
 		btn2.setBounds		(gW*6,	gH*25, btnW, btnH);
@@ -108,6 +111,8 @@ public class UICalc extends JFrame{
 		btnSum.setBounds	(gW*16,	gH*29, btnW, btnH);
 		
 		//BUTTON BORDERS START
+		txtOutput.setBorder(null);
+		
 		btn0.setBorder(null);
 		btn1.setBorder(null);
 		btn2.setBorder(null);
@@ -124,9 +129,20 @@ public class UICalc extends JFrame{
 		btnMul.setBorder(null);
 		btnDiv.setBorder(null);
 		
+		btnSqrt.setBorder(null);
+		
 		btnNeg.setBorder(null);
+		btnMC.setBorder(null);
+		btnMR.setBorder(null);
+		btnMS.setBorder(null);
+		btnMP.setBorder(null);
+		btnMM.setBorder(null);
 		
 		btnEq.setBorder(null);
+		
+		btnC.setBorder(null);
+		btnCE.setBorder(null);
+		btnBks.setBorder(null);
 		//BUTTON BORDERS END
 		
 		//BUTTON COLORS START
@@ -141,6 +157,13 @@ public class UICalc extends JFrame{
 		btn8.setBackground(buttonsNumbers);
 		btn9.setBackground(buttonsNumbers);
 		btnDec.setBackground(buttonsNumbers);
+		
+		btnMC.setBackground(buttonsMemory);
+		btnMR.setBackground(buttonsMemory);
+		btnMS.setBackground(buttonsMemory);
+		btnMP.setBackground(buttonsMemory);
+		btnMM.setBackground(buttonsMemory);
+		
 		//BUTTON COLORS END
 		
 		
@@ -456,12 +479,85 @@ public class UICalc extends JFrame{
 		});  
 		//BASIC ARITHMETICS END
 		
-		btnNeg.addActionListener(new ActionListener() {
+		//OTHER FUNCTIONS START
+		btnSqrt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				txtOutput.setText(-Double.parseDouble(txtOutput.getText()) + "");
+				if(val[0] == 0) {
+					txtOutput.setText(Math.sqrt(Double.parseDouble(txtOutput.getText())) + "");
+					
+					System.out.println(event + "\n\tpressed Square root: val[0] = " + val[0]);
+					
+				} else {
+					val[1]=Double.parseDouble(txtOutput.getText());
+					txtOutput.setText(Func.equals(val[0],Math.sqrt(val[1]),funType) + "");
+					
+					System.out.println(
+							event + 
+							"\n\tpressed Square root:\n\t\t" +
+							val[0] + " √" + funType + "\n\t\t" +
+							val[1] + " =\n\t\t" +
+							txtOutput.getText()
+					);
+					
+					funPressed=true;
+					val[0] = 0;
+					val[1] = 0;
+				}
+			}
+		});
+		btnRec.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				txtOutput.setText(1 / Double.parseDouble(txtOutput.getText()) + "");
+				System.out.println(event + "\n\tpressed Reciprocal (1/x): " + memory);
 			}
 		});
 		
+		btnNeg.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				txtOutput.setText(-Double.parseDouble(txtOutput.getText()) + "");
+				System.out.println(event + "\n\tpressed Negative/positive toggle: " + txtOutput.getText());
+			}
+		});
+		btnMC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				memory = 0;
+				System.out.println(event + "\n\tpressed Memory Clear.");
+				
+			}
+		});
+		btnMR.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				txtOutput.setText(memory + "");
+				System.out.println(event + "\n\tpressed Memory Recall.");
+				
+			}	
+		});
+		btnMS.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				memory = Double.parseDouble(txtOutput.getText());
+				System.out.println(event + "\n\tpressed Memory Set: " + memory);
+				
+				funPressed=true;
+			}
+		});
+		btnMP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				memory += Double.parseDouble(txtOutput.getText());
+				System.out.println(event + "\n\tpressed Memory +: " + memory);
+				
+				funPressed=true;
+			}
+		});
+		btnMM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				memory -= Double.parseDouble(txtOutput.getText());
+				System.out.println(event + "\n\tpressed Memory -: " + memory);
+			
+				funPressed=true;
+			}
+		});
+	
+	
 		btnEq.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				val[1]=Double.parseDouble(txtOutput.getText());
@@ -480,9 +576,69 @@ public class UICalc extends JFrame{
 				val[1] = 0;
 			}
 		});
+		btnPer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				if(val[0] == 0) {
+					txtOutput.setText(Math.sqrt(Double.parseDouble(txtOutput.getText())) + "");
+					
+					System.out.println(event + "\n\tpressed Percentage: val[0] = " + val[0]);
+					
+				} else {
+					//TODO fix weird calculations
+					val[1]=Double.parseDouble(txtOutput.getText());
+					txtOutput.setText(
+							Func.equals(
+									val[0],
+									val[0]*(val[1]/100),
+									funType
+									) +
+							"");
+					
+					System.out.println(
+							event + 
+							"\n\tpressed %:\n\t\t" +
+							val[0] + " " + funType + "%\n\t\t" +
+							val[1] + " =\n\t\t" +
+							txtOutput.getText()
+					);
+					
+					funPressed=true;
+					val[0]=Double.parseDouble(txtOutput.getText());
+				}
+			}
+		});
+		
+		btnCE.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				txtOutput.setText("0");
+				
+				System.out.println(event + "\n\tcleared screen.");
+			}
+		});
+		btnC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				txtOutput.setText("0");
+				
+				funPressed=false;
+				funType='0';
+				val[0]=0;
+				val[1]=0;
+				
+				System.out.println(event + "\n\tcleared everything.");
+			}
+		});
+		btnBks.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				if(txtOutput.getText().length() != 1) {
+					txtOutput.setText(txtOutput.getText().substring(0, txtOutput.getText().length()-1));
+				} else {
+					txtOutput.setText("0");
+				}
+			}
+		});
 		
 		
-		
+		pane.setBackground(bgColor);
 		this.setVisible(true);			  //makes the window visible
 		this.setSize(wWidth, wHeight);	 //window size and
 		this.setLocation(520, 325);		//location
@@ -499,9 +655,9 @@ public class UICalc extends JFrame{
 		pane.add(btnMM);
 		pane.add(btnBks);
 		pane.add(btnCE);
-		pane.add(btnCls);
+		pane.add(btnC);
 		pane.add(btnNeg);
-		pane.add(btnSQRT);
+		pane.add(btnSqrt);
 		pane.add(btn7);
 		pane.add(btn8);
 		pane.add(btn9);
@@ -511,7 +667,7 @@ public class UICalc extends JFrame{
 		pane.add(btn5);
 		pane.add(btn6);
 		pane.add(btnMul);
-		pane.add(btnFra);
+		pane.add(btnRec);
 		pane.add(btn1);
 		pane.add(btn2);
 		pane.add(btn3);
