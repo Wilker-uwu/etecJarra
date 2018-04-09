@@ -1,5 +1,6 @@
 package jarraEx7;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class UICalc extends JFrame{
 	
 	JTextField	txtOutput = new JTextField("0");
@@ -21,7 +23,7 @@ public class UICalc extends JFrame{
 				btnBks	= new JButton("←"),	//second row
 				btnCE	= new JButton("CE"),
 				btnCls	= new JButton("C"),
-				btnPN	= new JButton("±"),
+				btnNeg	= new JButton("±"),
 				btnSQRT	= new JButton("√"),
 				
 				btnDiv	= new JButton("/"),	//other functions
@@ -53,56 +55,59 @@ public class UICalc extends JFrame{
 		
 		Container pane = this.getContentPane();
 		pane.setLayout(null);
+		pane.setBackground(new Color(186,186,223));
 		
 		
 		//sets up the grid
-		int wWidth	= 220,
-			wHeight = 312,
+		int btnW	= 32,
+			btnH	= 26,
 			
 			gW		= 8,
 			gH		= 8,
 			
-			btnW	= 32,
-			btnH	= 26;
+			wWidth	= btnW*5+gW*7,
+			wHeight = btnH*8+gH*11;
+		Color buttonsNumbers = new Color(232,186,232);
 		
 		
 		//sets up locations
-		txtOutput.setBounds	(gW,gH, wWidth-(gW*3), gH*8);
+		txtOutput.setBounds	(gW,gH, wWidth-(gW*3), btnH*2);
 		
-		btnMC.setBounds		(gW*1,	gH*10, btnW, btnH);
-		btnMR.setBounds		(gW*6,	gH*10, btnW, btnH);
-		btnMS.setBounds		(gW*11,	gH*10, btnW, btnH);
-		btnMP.setBounds		(gW*16,	gH*10, btnW, btnH);
-		btnMM.setBounds		(gW*21,	gH*10, btnW, btnH);
+		btnMC.setBounds		(gW*1,	gH*9, btnW, btnH);
+		btnMR.setBounds		(gW*6,	gH*9, btnW, btnH);
+		btnMS.setBounds		(gW*11,	gH*9, btnW, btnH);
+		btnMP.setBounds		(gW*16,	gH*9, btnW, btnH);
+		btnMM.setBounds		(gW*21,	gH*9, btnW, btnH);
 		
-		btnBks.setBounds	(gW*1,	gH*14, btnW, btnH);
-		btnCE.setBounds		(gW*6,	gH*14, btnW, btnH);
-		btnCls.setBounds	(gW*11,	gH*14, btnW, btnH);
-		btnPN.setBounds		(gW*16,	gH*14, btnW, btnH);
-		btnSQRT.setBounds	(gW*21,	gH*14, btnW, btnH);
+		btnBks.setBounds	(gW*1,	gH*13, btnW, btnH);
+		btnCE.setBounds		(gW*6,	gH*13, btnW, btnH);
+		btnCls.setBounds	(gW*11,	gH*13, btnW, btnH);
+		btnNeg.setBounds	(gW*16,	gH*13, btnW, btnH);
+		btnSQRT.setBounds	(gW*21,	gH*13, btnW, btnH);
 		
-		btn7.setBounds		(gW*1,	gH*18, btnW, btnH);
-		btn8.setBounds		(gW*6,	gH*18, btnW, btnH);
-		btn9.setBounds		(gW*11,	gH*18, btnW, btnH);
-		btnDiv.setBounds	(gW*16,	gH*18, btnW, btnH);
-		btnPer.setBounds	(gW*21,	gH*18, btnW, btnH);
+		btn7.setBounds		(gW*1,	gH*17, btnW, btnH);
+		btn8.setBounds		(gW*6,	gH*17, btnW, btnH);
+		btn9.setBounds		(gW*11,	gH*17, btnW, btnH);
+		btnDiv.setBounds	(gW*16,	gH*17, btnW, btnH);
+		btnPer.setBounds	(gW*21,	gH*17, btnW, btnH);
 		
-		btn4.setBounds		(gW*1,	gH*22, btnW, btnH);
-		btn5.setBounds		(gW*6,	gH*22, btnW, btnH);
-		btn6.setBounds		(gW*11,	gH*22, btnW, btnH);
-		btnMul.setBounds	(gW*16,	gH*22, btnW, btnH);
-		btnFra.setBounds	(gW*21,	gH*22, btnW, btnH);
+		btn4.setBounds		(gW*1,	gH*21, btnW, btnH);
+		btn5.setBounds		(gW*6,	gH*21, btnW, btnH);
+		btn6.setBounds		(gW*11,	gH*21, btnW, btnH);
+		btnMul.setBounds	(gW*16,	gH*21, btnW, btnH);
+		btnFra.setBounds	(gW*21,	gH*21, btnW, btnH);
 		
-		btn1.setBounds		(gW*1,	gH*26, btnW, btnH);
-		btn2.setBounds		(gW*6,	gH*26, btnW, btnH);
-		btn3.setBounds		(gW*11,	gH*26, btnW, btnH);
-		btnSub.setBounds	(gW*16,	gH*26, btnW, btnH);
-		btnEq.setBounds		(gW*21,	gH*26, btnW, btnH*2+gW);
+		btn1.setBounds		(gW*1,	gH*25, btnW, btnH);
+		btn2.setBounds		(gW*6,	gH*25, btnW, btnH);
+		btn3.setBounds		(gW*11,	gH*25, btnW, btnH);
+		btnSub.setBounds	(gW*16,	gH*25, btnW, btnH);
+		btnEq.setBounds		(gW*21,	gH*25, btnW, btnH*2+gW);
 		
-		btn0.setBounds		(gW*1,	gH*30, btnW*2+gW, btnH);
-		btnDec.setBounds	(gW*11,	gH*30, btnW, btnH);
-		btnSum.setBounds	(gW*16,	gH*30, btnW, btnH);
+		btn0.setBounds		(gW*1,	gH*29, btnW*2+gW, btnH);
+		btnDec.setBounds	(gW*11,	gH*29, btnW, btnH);
+		btnSum.setBounds	(gW*16,	gH*29, btnW, btnH);
 		
+		//BUTTON BORDERS START
 		btn0.setBorder(null);
 		btn1.setBorder(null);
 		btn2.setBorder(null);
@@ -118,8 +123,29 @@ public class UICalc extends JFrame{
 		btnSub.setBorder(null);
 		btnMul.setBorder(null);
 		btnDiv.setBorder(null);
-		btnEq.setBorder(null);
 		
+		btnNeg.setBorder(null);
+		
+		btnEq.setBorder(null);
+		//BUTTON BORDERS END
+		
+		//BUTTON COLORS START
+		btn0.setBackground(buttonsNumbers);
+		btn1.setBackground(buttonsNumbers);
+		btn2.setBackground(buttonsNumbers);
+		btn3.setBackground(buttonsNumbers);
+		btn4.setBackground(buttonsNumbers);
+		btn5.setBackground(buttonsNumbers);
+		btn6.setBackground(buttonsNumbers);
+		btn7.setBackground(buttonsNumbers);
+		btn8.setBackground(buttonsNumbers);
+		btn9.setBackground(buttonsNumbers);
+		btnDec.setBackground(buttonsNumbers);
+		//BUTTON COLORS END
+		
+		
+		
+		//NUMBER BUTTONS START
 		btn0.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				
@@ -290,7 +316,9 @@ public class UICalc extends JFrame{
 				funPressed=false;
 			}
 		});
+		//NUMBER BUTTONS END
 		
+		//BASIC ARITHMETICS START
 		btnSum.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				
@@ -426,6 +454,13 @@ public class UICalc extends JFrame{
 				funType='/';
 			}
 		});  
+		//BASIC ARITHMETICS END
+		
+		btnNeg.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				txtOutput.setText(-Double.parseDouble(txtOutput.getText()) + "");
+			}
+		});
 		
 		btnEq.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
@@ -465,7 +500,7 @@ public class UICalc extends JFrame{
 		pane.add(btnBks);
 		pane.add(btnCE);
 		pane.add(btnCls);
-		pane.add(btnPN);
+		pane.add(btnNeg);
 		pane.add(btnSQRT);
 		pane.add(btn7);
 		pane.add(btn8);

@@ -1,6 +1,7 @@
 package JarraEx4.mamifero;
 
 /* MAMÍFEROS */
+@SuppressWarnings("unused")
 class Cachorro extends Mamifero {
 	
 	private boolean tipoLatido=false;

@@ -1,6 +1,7 @@
 package JarraEx4.ave;
 
 /* AVES */
+@SuppressWarnings("unused")
 class Papagaio extends Ave {
 	
 	private String[] vocabulario=null;

@@ -6,7 +6,7 @@ package jarra;
  *	STATIC VARIABLES; 
  */
 
-
+@SuppressWarnings("static-access")
 public class JarraClassExample2 {
 	
 	public static void main(String[] args) {

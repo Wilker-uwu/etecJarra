@@ -107,6 +107,7 @@ public class UIBasics extends JFrame{
 
 	public static void main(String[] args) {
 		
+		@SuppressWarnings("unused")
 		UIBasics window = new UIBasics();
 		
 	}

@@ -1,6 +1,7 @@
 package JarraEx4.mamifero;
 
 /* MAMÍFEROS */
+@SuppressWarnings("unused")
 class Vaca extends Mamifero {
 	
 	private boolean permiteOrdenha = false;

@@ -1,7 +1,8 @@
 package JarraEx4.ave;
 
 /* AVES */
-public class Ave extends JarraEx4.animal.Animal {
+@SuppressWarnings("unused")
+public class Ave extends JarraEx4.animal.Animal {	
 	
 	private int altura=0;
 	

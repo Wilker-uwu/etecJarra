@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class JarraWindowExample1 extends JFrame{
 	
 	JLabel		lblName = new JLabel("Nome: ");
@@ -30,6 +31,7 @@ public class JarraWindowExample1 extends JFrame{
 		
 	}
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		
 		JarraWindowExample1 window = new JarraWindowExample1();
