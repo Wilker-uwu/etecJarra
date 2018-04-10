@@ -130,6 +130,7 @@ public class UICalc extends JFrame{
 		btnDiv.setBorder(null);
 		
 		btnSqrt.setBorder(null);
+		btnPer.setBorder(null);
 		
 		btnNeg.setBorder(null);
 		btnMC.setBorder(null);
@@ -586,6 +587,7 @@ public class UICalc extends JFrame{
 				} else {
 					//TODO fix weird calculations
 					val[1]=Double.parseDouble(txtOutput.getText());
+					System.out.println(event + "\n\tpressed Percentage: val[1] = " + val[1]);
 					txtOutput.setText(
 							Func.equals(
 									val[0],
@@ -597,8 +599,8 @@ public class UICalc extends JFrame{
 					System.out.println(
 							event + 
 							"\n\tpressed %:\n\t\t" +
-							val[0] + " " + funType + "%\n\t\t" +
-							val[1] + " =\n\t\t" +
+							val[0] + " " + funType + "\n\t\t" +
+							val[1] + "% =\n\t\t" +
 							txtOutput.getText()
 					);
 					
