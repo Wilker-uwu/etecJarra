@@ -78,6 +78,7 @@ public class UICalc extends JFrame{
 		
 		txtOutput.setHorizontalAlignment(JTextField.RIGHT); //sets font alignment
 		txtOutput.setFont(txtOutputFont); //sets the font
+		txtOutput.setEditable(false);
 		
 		
 		//sets up locations
