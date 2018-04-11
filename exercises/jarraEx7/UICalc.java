@@ -2,6 +2,7 @@ package jarraEx7;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -72,6 +73,11 @@ public class UICalc extends JFrame{
 				buttonsMemory	= new Color(190,190,232),
 				buttonsFunctions= new Color(210,210,232),
 				bgColor			= new Color(186,255,223);
+		
+		Font	txtOutputFont	= new Font("SansSerif", Font.TRUETYPE_FONT, 28);
+		
+		txtOutput.setHorizontalAlignment(JTextField.RIGHT); //sets font alignment
+		txtOutput.setFont(txtOutputFont); //sets the font
 		
 		
 		//sets up locations
