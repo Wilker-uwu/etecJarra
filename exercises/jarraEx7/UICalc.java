@@ -59,17 +59,18 @@ public class UICalc extends JFrame{
 		
 		
 		//sets up the grid
-		int btnW	= 32,
-			btnH	= 26,
-			
-			gW		= 8,
+		int gW		= 8,
 			gH		= 8,
+		
+			btnW	= gW*4,
+			btnH	= 26,
 			
 			wWidth	= btnW*5+gW*7,
 			wHeight = btnH*8+gH*11;
 		
 		Color	buttonsNumbers	= new Color(232,200,232),
 				buttonsMemory	= new Color(190,190,232),
+				buttonsFunctions= new Color(210,210,232),
 				bgColor			= new Color(186,255,223);
 		
 		
@@ -104,7 +105,7 @@ public class UICalc extends JFrame{
 		btn2.setBounds		(gW*6,	gH*25, btnW, btnH);
 		btn3.setBounds		(gW*11,	gH*25, btnW, btnH);
 		btnSub.setBounds	(gW*16,	gH*25, btnW, btnH);
-		btnEq.setBounds		(gW*21,	gH*25, btnW, btnH*2+gW);
+		btnEq.setBounds		(gW*21,	gH*25, btnW, btnH*2+gW-2);
 		
 		btn0.setBounds		(gW*1,	gH*29, btnW*2+gW, btnH);
 		btnDec.setBounds	(gW*11,	gH*29, btnW, btnH);
@@ -130,6 +131,7 @@ public class UICalc extends JFrame{
 		btnDiv.setBorder(null);
 		
 		btnSqrt.setBorder(null);
+		btnRec.setBorder(null);
 		btnPer.setBorder(null);
 		
 		btnNeg.setBorder(null);
@@ -164,6 +166,22 @@ public class UICalc extends JFrame{
 		btnMS.setBackground(buttonsMemory);
 		btnMP.setBackground(buttonsMemory);
 		btnMM.setBackground(buttonsMemory);
+		
+		btnSum.setBackground(buttonsFunctions);
+		btnSub.setBackground(buttonsFunctions);
+		btnMul.setBackground(buttonsFunctions);
+		btnDiv.setBackground(buttonsFunctions);
+		
+		btnBks.setBackground(buttonsFunctions);
+		btnCE.setBackground(buttonsFunctions);
+		btnC.setBackground(buttonsFunctions);
+		
+		btnSqrt.setBackground(buttonsFunctions);
+		btnRec.setBackground(buttonsFunctions);
+		btnPer.setBackground(buttonsFunctions);
+		btnNeg.setBackground(buttonsFunctions);
+		
+		btnEq.setBackground(buttonsFunctions);
 		
 		//BUTTON COLORS END
 		
@@ -580,13 +598,11 @@ public class UICalc extends JFrame{
 		btnPer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				if(val[0] == 0) {
-					txtOutput.setText(Math.sqrt(Double.parseDouble(txtOutput.getText())) + "");
-					
-					System.out.println(event + "\n\tpressed Percentage: val[0] = " + val[0]);
+					System.out.println(event + "\n\tpressed Percentage: no function found");
 					
 				} else {
 					//TODO fix weird calculations
-					val[1]=Double.parseDouble(txtOutput.getText());
+					val[0]=Double.parseDouble(txtOutput.getText());
 					System.out.println(event + "\n\tpressed Percentage: val[1] = " + val[1]);
 					txtOutput.setText(
 							Func.equals(
@@ -605,7 +621,7 @@ public class UICalc extends JFrame{
 					);
 					
 					funPressed=true;
-					val[0]=Double.parseDouble(txtOutput.getText());
+					val[1]=Double.parseDouble(txtOutput.getText());
 				}
 			}
 		});
