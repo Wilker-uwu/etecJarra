@@ -77,17 +77,17 @@ public class UICalc extends JFrame{
 		//sets up locations
 		txtOutput.setBounds	(gW,gH, wWidth-(gW*3), btnH*2);
 		
-		btnMC.setBounds		(gW*1,	gH*9, btnW, btnH);
-		btnMR.setBounds		(gW*6,	gH*9, btnW, btnH);
-		btnMS.setBounds		(gW*11,	gH*9, btnW, btnH);
-		btnMP.setBounds		(gW*16,	gH*9, btnW, btnH);
-		btnMM.setBounds		(gW*21,	gH*9, btnW, btnH);
+		btnMC.setBounds		(gW*1+btnW*0,	gH*9, btnW, btnH);
+		btnMR.setBounds		(gW*2+btnW*1,	gH*9, btnW, btnH);
+		btnMS.setBounds		(gW*3+btnW*2,	gH*9, btnW, btnH);
+		btnMP.setBounds		(gW*4+btnW*3,	gH*9, btnW, btnH);
+		btnMM.setBounds		(gW*5+btnW*4,	gH*9, btnW, btnH);
 		
-		btnBks.setBounds	(gW*1,	gH*13, btnW, btnH);
-		btnCE.setBounds		(gW*6,	gH*13, btnW, btnH);
-		btnC.setBounds		(gW*11,	gH*13, btnW, btnH);
-		btnNeg.setBounds	(gW*16,	gH*13, btnW, btnH);
-		btnSqrt.setBounds	(gW*21,	gH*13, btnW, btnH);
+		btnBks.setBounds	(gW*1+btnW*0,	gH*13, btnW, btnH);
+		btnCE.setBounds		(gW*2+btnW*1,	gH*13, btnW, btnH);
+		btnC.setBounds		(gW*3+btnW*2,	gH*13, btnW, btnH);
+		btnNeg.setBounds	(gW*4+btnW*3,	gH*13, btnW, btnH);
+		btnSqrt.setBounds	(gW*5+btnW*4,	gH*13, btnW, btnH);
 		
 		btn7.setBounds		(gW*1,	gH*17, btnW, btnH);
 		btn8.setBounds		(gW*6,	gH*17, btnW, btnH);
@@ -124,6 +124,7 @@ public class UICalc extends JFrame{
 		btn7.setBorder(null);
 		btn8.setBorder(null);
 		btn9.setBorder(null);
+		btnDec.setBorder(null);
 		
 		btnSum.setBorder(null);
 		btnSub.setBorder(null);
@@ -188,6 +189,23 @@ public class UICalc extends JFrame{
 		
 		
 		//NUMBER BUTTONS START
+		btnDec.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+
+				if(txtOutput.getText().equals("0") || funPressed) {
+					
+					txtOutput.setText("0.");
+					
+				} else if (!txtOutput.getText().contains(".") && Math.floor(Double.parseDouble(txtOutput.getText())) == Double.parseDouble(txtOutput.getText()) ){
+					
+					txtOutput.setText(txtOutput.getText() + ".");
+					
+				};
+				
+				System.out.println(event);
+				funPressed=false;
+			}
+		});
 		btn0.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				
@@ -384,7 +402,7 @@ public class UICalc extends JFrame{
 							txtOutput.getText()
 					);
 					
-					val[0] = 0;
+					val[0] = Double.parseDouble(txtOutput.getText());
 					val[1] = 0;
 					
 					
@@ -418,7 +436,7 @@ public class UICalc extends JFrame{
 							txtOutput.getText()
 					);
 					
-					val[0] = 0;
+					val[0] = Double.parseDouble(txtOutput.getText());
 					val[1] = 0;
 					
 					
@@ -452,7 +470,7 @@ public class UICalc extends JFrame{
 							txtOutput.getText()
 					);
 					
-					val[0] = 0;
+					val[0] = Double.parseDouble(txtOutput.getText());
 					val[1] = 0;
 					
 					
@@ -486,7 +504,7 @@ public class UICalc extends JFrame{
 							txtOutput.getText()
 					);
 					
-					val[0] = 0;
+					val[0] = Double.parseDouble(txtOutput.getText());
 					val[1] = 0;
 					
 					
@@ -519,7 +537,7 @@ public class UICalc extends JFrame{
 					);
 					
 					funPressed=true;
-					val[0] = 0;
+					val[0] = Double.parseDouble(txtOutput.getText());
 					val[1] = 0;
 				}
 			}
@@ -537,6 +555,7 @@ public class UICalc extends JFrame{
 				System.out.println(event + "\n\tpressed Negative/positive toggle: " + txtOutput.getText());
 			}
 		});
+		
 		btnMC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				memory = 0;
@@ -591,18 +610,18 @@ public class UICalc extends JFrame{
 				);
 				
 				funPressed=true;
-				val[0] = 0;
+				val[0] = Double.parseDouble(txtOutput.getText());
 				val[1] = 0;
 			}
 		});
 		btnPer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				if(val[0] == 0) {
+				if(val[0] == 0 && val[1] == 0) {
 					System.out.println(event + "\n\tpressed Percentage: no function found");
 					
 				} else {
 					//TODO fix weird calculations
-					val[0]=Double.parseDouble(txtOutput.getText());
+					val[1]=Double.parseDouble(txtOutput.getText());
 					System.out.println(event + "\n\tpressed Percentage: val[1] = " + val[1]);
 					txtOutput.setText(
 							Func.equals(
