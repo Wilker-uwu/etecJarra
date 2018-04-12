@@ -2,7 +2,7 @@ package jarraEx7;
 
 public class Func {
 	
-	public static double equals(double a, double b,char type) {
+	public static double equals(double a, double b, char type) {
 		switch (type) {
 			case '+':
 				return a+b;
