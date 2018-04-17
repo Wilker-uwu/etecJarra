@@ -1,4 +1,4 @@
-package tests;
+package jarra;
 
 class Tezt1 {
 	public static void main(String[] args) {

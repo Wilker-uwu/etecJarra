@@ -1,4 +1,5 @@
-package view;
+//TODO fix this eh
+/*package view;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -103,28 +104,28 @@ public class PessoaFisica extends JFrame{
 		}
 		
 		try {
-			this.formatTel = new MaskFormatter("(##)####-####"); //a mascara
+			formatTel = new MaskFormatter("(##)####-####"); //a mascara
 			txtTel = new JFormattedTextField(formatTel);
 		} catch (Exception ext) { //exibir o erro
 			ext.printStackTrace();
 		}
 		
 		try {
-			MaskFormatter formatCel = new MaskFormatter("(##)#####-####"); //a mascara
+			formatCel = new MaskFormatter("(##)#####-####"); //a mascara
 			txtCel = new JFormattedTextField(formatCel);
 		} catch (Exception exc) { //exibir o erro
 			exc.printStackTrace();
 		}
 
 		try {
-			MaskFormatter formatRg = new MaskFormatter("##.###.###-A"); //a mascara
+			formatRg = new MaskFormatter("##.###.###-A"); //a mascara
 			txtRg = new JFormattedTextField(formatRg);
 		} catch (Exception exr) { //exibir o erro
 			exr.printStackTrace();
 		}
 
 		try {
-			MaskFormatter formatCpf = new MaskFormatter("###.###.###-##"); //a mascara
+			formatCpf = new MaskFormatter("###.###.###-##"); //a mascara
 			txtCpf = new JFormattedTextField(formatCpf);
 		} catch (Exception exf) { //exibir o erro
 			exf.printStackTrace();
@@ -150,4 +151,4 @@ public class PessoaFisica extends JFrame{
 	public static void main(String args[]){
 		
 	}
-}
+}*/
