@@ -4,14 +4,14 @@ public class JarraStrings1 {
 	public static void main(String args[]) {
 		String str= "owo what's this";
 		String xyz= new String("owo what's this");
-		
+		//both of these variables, or rather instances are the same.
 				
 		if(str==xyz)				//compares addresses, not values (if "str" is at the same space as "xyz".)
 			System.out.println("owo equal");
 		else
 			System.out.println("lol different");
 		
-		System.out.println();		//skips a line
+		System.out.println(); //skips a line, empty "printLine"
 		
 		if(str.equals(xyz))			//compares strings (if the value in "str" is the same as the one in "xyz".)
 			System.out.println("owo equal");
