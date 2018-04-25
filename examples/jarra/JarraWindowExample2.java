@@ -6,6 +6,7 @@ import java.awt.Container; //Container is responsible for the background and for
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -25,18 +26,24 @@ public class JarraWindowExample2 extends JFrame{
 	JTextArea		txtaText	= new JTextArea("PLACEHOLDER TEXT",16,32);
 		JScrollPane	scrText		= new JScrollPane(txtaText);
 	
-	ButtonGroup		grpOption	= null;
-	
 	JCheckBox[]		ckbOption	=	{
-									new JCheckBox("Option 0"),
-									new JCheckBox("Option 1"),
-									new JCheckBox("Option 2")
+									new JCheckBox("ckbOption0"),
+									new JCheckBox("ckbOption1"),
+									new JCheckBox("ckbOption2")
 									};
+	
+	JRadioButton[]	rdbOption	=	{
+									new JRadioButton("ckbOption0"),
+									new JRadioButton("ckbOption1"),
+									new JRadioButton("ckbOption2")
+									};
+	
+	ButtonGroup		grpRdbOption= new ButtonGroup();
 	
 	@SuppressWarnings("unused")
 	public JarraWindowExample2() {
 		
-		super("Window name");
+		super("Window example 2");
 		
 		Container pane = this.getContentPane();
 		pane.setLayout(null);
@@ -44,7 +51,7 @@ public class JarraWindowExample2 extends JFrame{
 		
 		//sets up the grid
 		int gW		= 8,
-			gH		= 8,
+			gH		= 8,		
 		
 			btnW	= gW*4,
 			btnH	= 26,
@@ -63,9 +70,9 @@ public class JarraWindowExample2 extends JFrame{
 		
 		txtaText.setBounds		(gW*1,			gH*1,					wWidth-(gW*4),	btnH*4);
 		
-		ckbOption[0].setBounds	(gW*1+btnW*0,	gH*2+btnH*4+ckbH*0,		ckbW,			ckbH);
-		ckbOption[1].setBounds	(gW*1+btnW*0,	gH*2+btnH*4+ckbH*1,		ckbW,			ckbH);
-		ckbOption[2].setBounds	(gW*1+btnW*0,	gH*2+btnH*4+ckbH*2,		ckbW,			ckbH);
+		rdbOption[0].setBounds	(gW*1+btnW*0,	gH*2+btnH*4+ckbH*0,		ckbW,			ckbH);
+		rdbOption[1].setBounds	(gW*1+btnW*0,	gH*2+btnH*4+ckbH*1,		ckbW,			ckbH);
+		rdbOption[2].setBounds	(gW*1+btnW*0,	gH*2+btnH*4+ckbH*2,		ckbW,			ckbH);
 		
 		btn1.setBounds			(gW*2+btnW*1,	gH*3+btnH*4+ckbH*3,		btnW,			btnH);
 		btn2.setBounds			(gW*3+btnW*2,	gH*3+btnH*4+ckbH*3,		btnW,			btnH);
@@ -87,15 +94,14 @@ public class JarraWindowExample2 extends JFrame{
 		scrText.setVerticalScrollBarPolicy(
 				JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		
-		
-		
 		pane.add(txtaText);
 		
 		//TODO complete
-		for (int i = 0; i < grpOption.length; i++){
-			ckbOption[i].setBorder(null);
-			grpOption.add(ckbOption[i]);
-			pane.add(ckbOption[i]);
+		for (int i = 0; i <3; i++) {
+			rdbOption[i].setBorder(null);
+			rdbOption[i].setBackground(bgColor);
+			grpRdbOption.add(rdbOption[i]);
+			pane.add(rdbOption[i]);
 		}
 		pane.add(btn1);
 		pane.add(btn2);
