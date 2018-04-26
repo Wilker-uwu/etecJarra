@@ -97,11 +97,11 @@ public class JarraWindowExample2 extends JFrame{
 		pane.add(txtaText);
 		
 		//TODO complete
-		for (int i = 0; i <3; i++) {
-			rdbOption[i].setBorder(null);
-			rdbOption[i].setBackground(bgColor);
-			grpRdbOption.add(rdbOption[i]);
-			pane.add(rdbOption[i]);
+		for (JRadioButton radioBox : rdbOption) {
+			radioBox.setBorder(null);
+			radioBox.setBackground(bgColor);
+			grpRdbOption.add(radioBox);
+			pane.add(radioBox);
 		}
 		pane.add(btn1);
 		pane.add(btn2);
@@ -110,7 +110,7 @@ public class JarraWindowExample2 extends JFrame{
 		pane.setBackground(bgColor);
 		this.setVisible(true);
 		this.setSize(wWidth, wHeight);
-		this.setLocation(520, 325);
+		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 

@@ -30,6 +30,7 @@ public class JarraWindowExample1 extends JFrame{
 		this.setVisible(true);		//makes the window visible on the screen (bool isVisible)
 		this.setSize(400, 100);		 //sets the size of the window (int width, int height)
 		this.setLocation(520, 325);	//and location (int xPos, int yPos)
+		this.setLocationRelativeTo(null); //alternatively, location relative to (null), so it picks up the screen size by default
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE); //kills the javaw.exe process on close
 	}
 

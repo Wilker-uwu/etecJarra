@@ -18,17 +18,17 @@ public class JarraWindowTemplate extends JFrame{
 		
 		
 		//sets up the grid
-		int gW		= 8,
-			gH		= 8,		
+		int gW		= 8,	//horizontal grid to ease coordinate usage
+			gH		= 8,	//vertical grid
 		
-			btnW	= gW*4,
-			btnH	= 26,
+			btnW	= gW*4,	//default button dimensions
+			btnH	= 26,	//vertical button dimension
 			
-			wWidth	= btnW*3+gW*16,
-			wHeight = btnH*8+gH*11,
+			wWidth	= btnW*3+gW*16,	//width of the window, uses the buttons and grid dimensions for a better layout
+			wHeight = btnH*8+gH*11,	//height of the window
 			
-			ckbW	= wWidth-(gW*4),
-			ckbH	= 20;
+			ckbW	= wWidth-(gW*4), //checkBox/radioBox dimensions: full width of the window with some spacing
+			ckbH	= 20;	//checkBox/radioBox height: usual size of the text with some spacing
 		
 		//sets up colors
 		Color	buttonsNumbers	= new Color(232,200,232),
@@ -40,11 +40,11 @@ public class JarraWindowTemplate extends JFrame{
 		 *	TODO building and functions goes here.
 		 */
 		
-		pane.setBackground(bgColor);
-		this.setVisible(true);
-		this.setSize(wWidth, wHeight);
-		this.setLocation(520, 325);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		pane.setBackground(bgColor);						//sets the background color
+		this.setVisible(true);							   //makes the window visible
+		this.setSize(wWidth, wHeight);					  //gathers wWidth and wHeight to set the window size
+		this.setLocationRelativeTo(null);				 //sets location relative to nothing, so it uses the center of the screen by default
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);	//closes the application process "javaw.exe" when the window is closed
 	}
 	
 	public static void main(String[] args) {
