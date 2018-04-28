@@ -44,6 +44,7 @@ class GridLayoutWindow extends JFrame {
 	public GridLayoutWindow(String name) {
 	
 		super(name);
+		Container pane = this.getContentPane();
 		
 		//sets up the grid
 		int gW		= 8,
@@ -64,8 +65,7 @@ class GridLayoutWindow extends JFrame {
 		buttonsFunctions= new Color(210,210,232),
 		bgColor			= new Color(186,255,223);
 		
-		Container pane = this.getContentPane();
-		pane.setLayout(new GridLayout(5,8));
+		pane.setLayout(new GridLayout(8,16));
 		
 		int i=0;
 		for(JLabel itemInfo : lblInfo) {
@@ -79,7 +79,7 @@ class GridLayoutWindow extends JFrame {
 		pane.setBackground(bgColor);						//sets the background color
 		this.setVisible(true);							   //makes the window visible
 		this.setSize(wWidth, ckbH*5);					  //gathers wWidth and wHeight to set the window size
-		this.setLocationRelativeTo(null);				 //sets location relative to nothing, so it uses the center of the screen by default
+		this.setLocation(200,200);				 //sets location relative to nothing, so it uses the center of the screen by default
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);	//closes the application process "javaw.exe" when the window is closed
 	}
 
@@ -97,11 +97,11 @@ class FlowLayoutWindow extends JFrame {
 								};
 	
 	JTextField[]	txtInfo	=	{
-									new JTextField(32),
-									new JTextField(32),
-									new JTextField(32),
-									new JTextField(32),
-									new JTextField(32),
+									new JTextField(28),
+									new JTextField(28),
+									new JTextField(28),
+									new JTextField(28),
+									new JTextField(28),
 								};
 
 	@SuppressWarnings("unused")
@@ -129,7 +129,7 @@ class FlowLayoutWindow extends JFrame {
 		bgColor			= new Color(186,255,223);
 		
 		Container pane = this.getContentPane();
-		pane.setLayout(new FlowLayout(FlowLayout.LEFT)); //this layout is like a text block. the lines breaks when the element is too large to fit. 
+		pane.setLayout(new FlowLayout(FlowLayout.LEFT, 6, 5)); //this layout is like a text block. the lines breaks when the element is too large to fit. 
 		
 		int i=0;
 		for(JLabel itemInfo : lblInfo) {
