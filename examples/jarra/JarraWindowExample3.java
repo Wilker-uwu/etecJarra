@@ -2,8 +2,6 @@ package jarra;
 
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Random;
 
 import javax.swing.JFrame;
@@ -96,19 +94,6 @@ public class JarraWindowExample3 extends JFrame{
 		//locks and looks of the tool bar
 		tlbFile.setFloatable(false);
 		tlbFile.setBorder(null);
-		
-		/*btnFile[0].addActionListener(new ActionListener() { TODO add rancomizer
-			public void actionPerformed(ActionEvent event) {
-				data[0][1]	=	{
-								{"Eduardo Jorge",	cities[rng.nextInt(4-1)], states[rng.nextInt(4-1)]},
-								{"Gustavo Neves",	cities[rng.nextInt(4-1)], states[rng.nextInt(4-1)]},
-								{"Tarcísio Araújo",	cities[rng.nextInt(4-1)], states[rng.nextInt(4-1)]},
-								{"Rafael",			cities[rng.nextInt(4-1)], states[rng.nextInt(4-1)]}
-							};
-				tblStates			= new JTable(data, columns);
-				scrpaneTblStates	= new JScrollPane(tblStates);
-			}
-		});*/
 		
 		
 		
