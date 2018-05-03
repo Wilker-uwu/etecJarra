@@ -41,6 +41,9 @@ class WindowFrame extends JFrame {
 													new JMenuItem("Quit")
 												};
 	
+	int subFrameCount		= 0;
+	SubFrame frameWindow	= null;
+	
 	public WindowFrame(String wName) {
 		
 		super(wName);
@@ -59,6 +62,19 @@ class WindowFrame extends JFrame {
 		}
 		
 		
+		
+		menuFileItem[0].addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				if(frameWindow != null) {
+					frameWindow = new SubFrame("Internal Frame Window");
+				}
+			}
+		});
+		
+		
+		
+		pane.add(desktop);
+			desktop.setVisible(true);
 		pane.add(tlbFile);
 		
 		menuFileItem[1].addActionListener(new ActionListener() { //adds close window function to the Exit button at the menu
@@ -78,8 +94,6 @@ class WindowFrame extends JFrame {
 @SuppressWarnings("serial")
 class SubFrame extends JInternalFrame {
 	
-	JDesktopPane desktop = new JDesktopPane();
-	
 	public SubFrame(String wName) {
 		
 		super(wName);
@@ -87,7 +101,6 @@ class SubFrame extends JInternalFrame {
 		pane.setLayout(null);
 		
 		
-	    desktop.setVisible(true);
 		
 		
 		pane.setBackground(Appearance.buttonsNumbers);					   //sets the background color
