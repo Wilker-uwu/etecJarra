@@ -22,7 +22,6 @@ public class UIInternalFrame extends JFrame{
 	public static void main(String[] args) {
 		
 		WindowFrame			windowMain	= new WindowFrame("Internal frame window");
-		SubFrame			windowSub	= new SubFrame("e");
 		
 	}
 
@@ -32,8 +31,6 @@ public class UIInternalFrame extends JFrame{
 @SuppressWarnings("serial")
 class WindowFrame extends JFrame {
 	
-	JDesktopPane desktop = new JDesktopPane();
-	
 	JMenuBar		tlbFile					= new JMenuBar();	//creates a tool bar named "tlbFile"
 		JMenu			menuFile			= new JMenu("File...");
 			JMenuItem		menuFileItem[]	=	{	//creates an array of items for the menu "File..."
@@ -42,18 +39,22 @@ class WindowFrame extends JFrame {
 												};
 	
 	int subFrameCount		= 0;
-	SubFrame frameWindow	= null;
-	
+		
 	public WindowFrame(String wName) {
 		
 		super(wName);
+		
 		Container pane = this.getContentPane();
 		pane.setLayout(null);
-		
+		final JDesktopPane desktop = new JDesktopPane();
 	    
 		
-		tlbFile.setBounds			(0,	0,	Appearance.wWidth,	Appearance.tlbH);
+		tlbFile.setBounds			(0,	0,					Appearance.wWidth,	Appearance.tlbH);
 			tlbFile.setBorder(null);
+		desktop.setBounds			(0,	Appearance.tlbH,	Appearance.wWidth,	Appearance.wHeight-Appearance.tlbH);
+			desktop.setBorder(null);
+			desktop.setBackground(Appearance.bgColor);
+			
 		
 		
 		tlbFile.add(menuFile);
@@ -65,9 +66,9 @@ class WindowFrame extends JFrame {
 		
 		menuFileItem[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				if(frameWindow != null) {
-					frameWindow = new SubFrame("Internal Frame Window");
-				}
+				SubFrame windowThing = new SubFrame("Internal Frame Window", 20*++subFrameCount, 180, 180);
+				desktop.add(windowThing);
+				windowThing.grabFocus();
 			}
 		});
 		
@@ -94,7 +95,7 @@ class WindowFrame extends JFrame {
 @SuppressWarnings("serial")
 class SubFrame extends JInternalFrame {
 	
-	public SubFrame(String wName) {
+	public SubFrame(String wName, int pos, int width, int height) {
 		
 		super(wName);
 		Container pane = this.getContentPane();
@@ -103,10 +104,13 @@ class SubFrame extends JInternalFrame {
 		
 		
 		
-		pane.setBackground(Appearance.buttonsNumbers);					   //sets the background color
-		this.setVisible(true);									  //makes the window visible
-		this.setSize(Appearance.wWidth, Appearance.wHeight);	 //gathers wWidth and wHeight to set the window size
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);			//closes the application process "javaw.exe" when the window is closed
+		pane.setBackground(Appearance.bgsColor);					   //sets the background color
+		this.setVisible(true);
+		this.setLocation(pos, pos);//makes the window visible
+		this.setSize(width, height);	 //gathers wWidth and wHeight to set the window size
+		
+		this.setClosable(true);	//adds close button to window
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 	
 }
@@ -130,5 +134,6 @@ final class Appearance {
 	static Color	buttonsNumbers	= new Color(232,200,232),
 					buttonsMemory	= new Color(190,190,232),
 					buttonsFunctions= new Color(210,210,232),
-					bgColor			= new Color(186,255,223);
+					bgColor			= new Color(186,255,223),
+					bgsColor		= new Color(223,223,223);;
 }
