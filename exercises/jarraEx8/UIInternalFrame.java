@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -109,10 +111,23 @@ class SubFrame extends JInternalFrame {
 		this.setLocation(pos, pos);//makes the window visible
 		this.setSize(width, height);	 //gathers wWidth and wHeight to set the window size
 		
+		this.toFront();
+		this.addFocusListener(new FocusListener() {
+			
+			public void focusGained(FocusEvent e) {
+				windowFocus();
+			}
+
+			public void focusLost(FocusEvent e) { }
+		});
+		
 		this.setClosable(true);	//adds close button to window
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 	
+	private void windowFocus() {
+		this.toFront();
+	}
 }
 
 final class Appearance {
