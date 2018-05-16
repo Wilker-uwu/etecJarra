@@ -2,10 +2,12 @@ package jarra;
 
 public class JarraStrings1 {
 	public static void main(String args[]) {
+		
 		String str= "owo what's this";
 		String xyz= new String("owo what's this");
 		//both of these variables, or rather instances are the same.
-				
+		/* i swear i didn't know what this phrase meant in the day i wrote this .-. */
+		
 		if(str==xyz)				//compares addresses, not values (if "str" is at the same space as "xyz".)
 			System.out.println("owo equal");
 		else
@@ -23,6 +25,6 @@ public class JarraStrings1 {
 		String myString= "hello world";
 		System.out.println("string lenght:\t"	+myString.length()			); //prints the length of myString
 		System.out.println("sub:\t\t"			+myString.substring(0,10)	); //prints part of myString
-		System.out.println("5º pos:\t\t"		+myString.charAt(9)			); //prints the character at position 9 of myString (counts from 0)
+		System.out.println("5ï¿½ pos:\t\t"		+myString.charAt(9)			); //prints the character at position 9 of myString (counts from 0)
 	}
 }
