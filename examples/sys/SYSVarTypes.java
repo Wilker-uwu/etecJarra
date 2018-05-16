@@ -1,6 +1,6 @@
-package jarra;
+package sys;
 
-public class JarraPrimitivos {
+public class SYSVarTypes {
 	public static void main(String args[]) {
 		
 		int idade=18;		//this is an integrer variable type (1,2,3,4,8,16,32,64...)
@@ -9,7 +9,7 @@ public class JarraPrimitivos {
 		
 		boolean isSim=true;	//boolean variable type (true,false)
 		
-		char letterA='A';	//character variable type (a,b,1,6,º,™...)
+		char letterA='A';	//character variable type (a,b,1,6,ï¿½,ï¿½...)
 		letterA=65;			//you can set the value with an hexa or ASCII value too
 		letterA='\u0041';
 		

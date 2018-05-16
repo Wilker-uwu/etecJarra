@@ -1,4 +1,4 @@
-package jarra;
+package sys;
 
 
 /*
@@ -7,7 +7,7 @@ package jarra;
  */
 
 
-public class JarraClassExample1 {
+public class SYSClasses1 {
 	public static void main(String[] args) {
 		
 		/* creating an example of a car */

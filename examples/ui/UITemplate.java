@@ -1,4 +1,4 @@
-package jarra;
+package ui;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -6,10 +6,10 @@ import java.awt.Container;
 import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
-public class JarraWindowTemplate extends JFrame{
+public class UITemplate extends JFrame{
 	
 	@SuppressWarnings("unused")
-	public JarraWindowTemplate() {
+	public UITemplate() {
 		
 		super("Window name");
 		
@@ -49,7 +49,7 @@ public class JarraWindowTemplate extends JFrame{
 	
 	public static void main(String[] args) {
 		@SuppressWarnings("unused")
-		JarraWindowTemplate window = new JarraWindowTemplate();
+		UITemplate window = new UITemplate();
 	}
 
 }

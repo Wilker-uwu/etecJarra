@@ -1,4 +1,4 @@
-package jarra;
+package sys;
 
 
 /*
@@ -7,7 +7,7 @@ package jarra;
  */
 
 @SuppressWarnings("static-access")
-public class JarraClassExample2 {
+public class SYSClasses2 {
 	
 	public static void main(String[] args) {
 		

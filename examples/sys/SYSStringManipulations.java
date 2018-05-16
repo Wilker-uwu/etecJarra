@@ -1,6 +1,6 @@
-package jarra;
+package sys;
 
-public class JarraStrings1 {
+public class SYSStringManipulations {
 	public static void main(String args[]) {
 		
 		String str= "owo what's this";
@@ -25,6 +25,6 @@ public class JarraStrings1 {
 		String myString= "hello world";
 		System.out.println("string lenght:\t"	+myString.length()			); //prints the length of myString
 		System.out.println("sub:\t\t"			+myString.substring(0,10)	); //prints part of myString
-		System.out.println("5� pos:\t\t"		+myString.charAt(9)			); //prints the character at position 9 of myString (counts from 0)
+		System.out.println("5� pos:\t\t"			+myString.charAt(9)			); //prints the character at position 9 of myString (counts from 0)
 	}
 }

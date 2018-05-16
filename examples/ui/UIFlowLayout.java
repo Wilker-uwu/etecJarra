@@ -1,4 +1,4 @@
-package jarra;
+package ui;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
-public class JarraWindowExample4 extends JFrame{	
+public class UIFlowLayout extends JFrame{	
 	
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {

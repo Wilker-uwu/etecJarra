@@ -1,6 +1,6 @@
-package jarra;
+package sys;
 
-class Tezt1 {
+class SYSOutsideCall {
 	public static void main(String[] args) {
 		mae();								//calls "mae" function inside "Tezt1"
 		System.out.println(Tezt2.stop(4)); //prints the result of 4*4

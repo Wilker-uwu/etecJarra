@@ -1,4 +1,4 @@
-package jarra;
+package ui;
 
 import java.awt.Container; //Container is responsible for the background and for enabling the layouts
 
@@ -7,12 +7,12 @@ import javax.swing.JLabel; //JLabels are texts that appears on the desired areas
 import javax.swing.JTextField; //JTextField is a text field. you type on it. (unless locked)
 
 @SuppressWarnings("serial")
-public class JarraWindowExample1 extends JFrame{
+public class UIExample1 extends JFrame{
 	
 	JLabel		lblName = new JLabel("Nome: ");  //creates a label to write "Nome: " on it
 	JTextField	txtName = new JTextField("lol"); //creates a text field. the parameter value can be null. it currently starts with "lol" already writen on it
 	
-	public JarraWindowExample1() {
+	public UIExample1() {
 		
 		super("Window name"); //the "super" method sets window label that you see on top of it. 
 		
@@ -37,7 +37,7 @@ public class JarraWindowExample1 extends JFrame{
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		
-		JarraWindowExample1 window = new JarraWindowExample1(); //calls the window for usage
+		UIExample1 window = new UIExample1(); //calls the window for usage
 		
 	}
 

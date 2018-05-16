@@ -1,4 +1,4 @@
-package jarra;
+package ui;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -11,9 +11,16 @@ import javax.swing.JTable;
 import javax.swing.JToolBar;
 import javax.swing.JButton;
 
+/*
+ * CONTENTS:
+ * 	JToolBar
+ * 	JList
+ * 	JTable
+ * 
+ */
 
 @SuppressWarnings("serial")
-public class JarraWindowExample3 extends JFrame{
+public class UIExample3 extends JFrame{
 	
 	JToolBar		tlbFile				= new JToolBar();	//creates a tool bar named "tlbFile"
 		JButton[]	btnFile				=	{	//creates an array of buttons for the tool bar
@@ -32,7 +39,7 @@ public class JarraWindowExample3 extends JFrame{
 	
 	
 	@SuppressWarnings({ "unused", "unchecked", "rawtypes" })
-	public JarraWindowExample3() {
+	public UIExample3() {
 		
 		super("Window example 3");
 		
@@ -64,14 +71,14 @@ public class JarraWindowExample3 extends JFrame{
 		Random rng = new Random();
 		
 		//declares an array of different strings
-		String	cities[]	= {"Salvador","Caetité","Mutuípe","Campinas"},
+		String	cities[]	= {"Salvador","Caetitï¿½","Mutuï¿½pe","Campinas"},
 				states[]	= {"SP","RJ","AM","PA","MG"},
 				
 				columns[]	=	{"Nome", "Cidade", "Estado"},
 				data[][]	=	{
 									{"Eduardo Jorge",	cities[rng.nextInt(4-1)], states[rng.nextInt(4-1)]},
 									{"Gustavo Neves",	cities[rng.nextInt(4-1)], states[rng.nextInt(4-1)]},
-									{"Tarcísio Araújo",	cities[rng.nextInt(4-1)], states[rng.nextInt(4-1)]},
+									{"Tarcï¿½sio Araï¿½jo",	cities[rng.nextInt(4-1)], states[rng.nextInt(4-1)]},
 									{"Rafael",			cities[rng.nextInt(4-1)], states[rng.nextInt(4-1)]}
 								};
 		
@@ -111,7 +118,7 @@ public class JarraWindowExample3 extends JFrame{
 	
 	public static void main(String[] args) {
 		@SuppressWarnings("unused")
-		JarraWindowExample3 window = new JarraWindowExample3();
+		UIExample3 window = new UIExample3();
 	}
 
 }

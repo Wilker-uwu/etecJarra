@@ -69,8 +69,8 @@ class WindowFrame extends JFrame {
 				
 				//creates a window
 				SubFrame windowThing = new SubFrame("Internal Frame Window " + ++subFrameCount, 20*subFrameCount, 180, 180);
-				desktop.add(windowThing);
-				windowThing.grabFocus();
+				desktop.add(windowThing); //draws the window on the desktop pane
+				windowThing.grabFocus(); //focuses the window once it's open
 			}
 		});
 		
@@ -116,7 +116,7 @@ class SubFrame extends JInternalFrame {
 		this.addFocusListener(new FocusListener() {
 			
 			public void focusGained(FocusEvent e) {
-				windowFocus();
+				windowFocus(); //calls the method that pulls the window to front
 			}
 
 			public void focusLost(FocusEvent e) { }
@@ -127,7 +127,7 @@ class SubFrame extends JInternalFrame {
 	}
 	
 	private void windowFocus() {
-		this.toFront();
+		this.toFront(); //pulls the window to the front of the others
 	}
 }
 

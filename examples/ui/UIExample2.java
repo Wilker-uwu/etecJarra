@@ -1,4 +1,4 @@
-package jarra;
+package ui;
 
 import java.awt.Color;
 import java.awt.Container; //Container is responsible for the background and for enabling the layouts
@@ -13,8 +13,19 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 
+/*
+ * CONTENTS:
+ * 	JLabel
+ * 	JTextField
+ * 	JTextArea
+ * 	JButton
+ * 	JCheckBox
+ * 	JRadioButton
+ * 	ButtonGroup
+ */
+
 @SuppressWarnings("serial")
-public class JarraWindowExample2 extends JFrame{
+public class UIExample2 extends JFrame{
 	
 	JLabel			lblName 	= new JLabel("Nome: ");
 	JTextField		txtName		= new JTextField("lol");
@@ -41,7 +52,7 @@ public class JarraWindowExample2 extends JFrame{
 	ButtonGroup		grpRdbOption= new ButtonGroup();
 	
 	@SuppressWarnings("unused")
-	public JarraWindowExample2() {
+	public UIExample2() {
 		
 		super("Window example 2");
 		
@@ -68,7 +79,7 @@ public class JarraWindowExample2 extends JFrame{
 				buttonsFunctions= new Color(210,210,232),
 				bgColor			= new Color(186,255,223);
 		
-		txtaText.setBounds		(gW*1,			gH*1,					wWidth-(gW*4),	btnH*4);
+		scrText.setBounds		(gW*1,			gH*1,					wWidth-(gW*4),	btnH*4);
 		
 		rdbOption[0].setBounds	(gW*1+btnW*0,	gH*2+btnH*4+ckbH*0,		ckbW,			ckbH);
 		rdbOption[1].setBounds	(gW*1+btnW*0,	gH*2+btnH*4+ckbH*1,		ckbW,			ckbH);
@@ -79,7 +90,7 @@ public class JarraWindowExample2 extends JFrame{
 		btn3.setBounds			(gW*4+btnW*3,	gH*3+btnH*4+ckbH*3,		btnW,			btnH);
 		
 		
-		txtaText.setBorder(null);
+		scrText.setBorder(null);
 		btn1.setBorder(null);
 		btn2.setBorder(null);
 		btn3.setBorder(null);
@@ -94,7 +105,7 @@ public class JarraWindowExample2 extends JFrame{
 		scrText.setVerticalScrollBarPolicy(
 				JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		
-		pane.add(txtaText);
+		pane.add(scrText);
 		
 		//TODO complete
 		for (JRadioButton radioBox : rdbOption) {
@@ -117,7 +128,7 @@ public class JarraWindowExample2 extends JFrame{
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		
-		JarraWindowExample2 window = new JarraWindowExample2(); //calls the window for usage
+		UIExample2 window = new UIExample2(); //calls the window for usage
 		
 	}
 
