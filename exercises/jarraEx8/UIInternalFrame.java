@@ -15,8 +15,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JDesktopPane;
 
 
-//TODO MAKE AN INTERNAL FRAME
-
 @SuppressWarnings("serial")
 public class UIInternalFrame extends JFrame{
 	
@@ -51,9 +49,9 @@ class WindowFrame extends JFrame {
 		final JDesktopPane desktop = new JDesktopPane();
 	    
 		
-		tlbFile.setBounds			(0,	0,					Appearance.wWidth,	Appearance.tlbH);
+		tlbFile.setBounds			(0,	0,					Appearance.wWidth*3,	Appearance.tlbH);
 			tlbFile.setBorder(null);
-		desktop.setBounds			(0,	Appearance.tlbH,	Appearance.wWidth,	Appearance.wHeight-Appearance.tlbH);
+		desktop.setBounds			(0,	Appearance.tlbH,	Appearance.wWidth*3,	Appearance.wHeight*2-Appearance.tlbH);
 			desktop.setBorder(null);
 			desktop.setBackground(Appearance.bgColor);
 			
@@ -66,9 +64,11 @@ class WindowFrame extends JFrame {
 		
 		
 		
-		menuFileItem[0].addActionListener(new ActionListener() {
+		menuFileItem[0].addActionListener(new ActionListener() { //adds event for clicks
 			public void actionPerformed(ActionEvent event) {
-				SubFrame windowThing = new SubFrame("Internal Frame Window", 20*++subFrameCount, 180, 180);
+				
+				//creates a window
+				SubFrame windowThing = new SubFrame("Internal Frame Window " + ++subFrameCount, 20*subFrameCount, 180, 180);
 				desktop.add(windowThing);
 				windowThing.grabFocus();
 			}
@@ -85,11 +85,11 @@ class WindowFrame extends JFrame {
 				System.exit(0);	//closes the application
 			}
 		});
-		pane.setBackground(Appearance.bgColor);							//sets the background color
-		this.setVisible(true);								   //makes the window visible
-		this.setSize(Appearance.wWidth, Appearance.wHeight);						  //gathers wWidth and wHeight to set the window size
-		this.setLocationRelativeTo(null);					 //sets location relative to nothing, so it uses the center of the screen by default
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);		//closes the application process "javaw.exe" when the window is closed
+		pane.setBackground(Appearance.bgColor);						//sets the background color
+		this.setVisible(true);									   //makes the window visible
+		this.setSize(Appearance.wWidth*3, Appearance.wHeight*2);  //gathers wWidth and wHeight to set the window size
+		this.setLocationRelativeTo(null);						 //sets location relative to nothing, so it uses the center of the screen by default
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);			//closes the application process "javaw.exe" when the window is closed
 	}
 	
 }
@@ -106,10 +106,11 @@ class SubFrame extends JInternalFrame {
 		
 		
 		
-		pane.setBackground(Appearance.bgsColor);					   //sets the background color
-		this.setVisible(true);
-		this.setLocation(pos, pos);//makes the window visible
+		pane.setBackground(Appearance.bgsColor);	//sets the background color
+		this.setVisible(true);						//makes the window visible
+		this.setLocation(pos, pos);	
 		this.setSize(width, height);	 //gathers wWidth and wHeight to set the window size
+		this.setResizable(true);
 		
 		this.toFront();
 		this.addFocusListener(new FocusListener() {
@@ -139,8 +140,8 @@ final class Appearance {
 				btnW	= gW*4,	//default button dimensions
 				btnH	= 26,	//vertical button dimension
 				
-				wWidth	= (btnW*3+gW*16)*3,	//width of the window, uses the buttons and grid dimensions for a better layout
-				wHeight = (btnH*8+gH*11)*2,	//height of the window
+				wWidth	= (btnW*3+gW*16),	//width of the window, uses the buttons and grid dimensions for a better layout
+				wHeight = (btnH*8+gH*11),	//height of the window
 				
 				ckbW	= wWidth-(gW*4), //checkBox/radioBox dimensions: full width of the window with some spacing
 				ckbH	= 20;	//checkBox/radioBox height: usual size of the text with some spacing

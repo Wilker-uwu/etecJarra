@@ -6,11 +6,9 @@
 
   <groupId>etecJarra</groupId>
   <artifactId>etecJarra</artifactId>
-  <version>1.0-SNAPSHOT</version>
 
   <name>etecJarra</name>
   <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -62,4 +60,6 @@
       </plugins>
     </pluginManagement>
   </build>
+  <version>NO_VERSION</version>
+  <description>projeto java aulas and stuff</description>
 </project>
