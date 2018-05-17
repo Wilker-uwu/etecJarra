@@ -16,6 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JList;
 
 @SuppressWarnings("serial")
 public class UIBasicIO extends JFrame{
@@ -46,8 +47,8 @@ public class UIBasicIO extends JFrame{
 			wWidth	= btnW*3+gW*16,	//width of the window, uses the buttons and grid dimensions for a better layout
 			wHeight = btnH*8+gH*11,	//height of the window
 			
-			ckbW	= wWidth-(gW*4), //checkBox/radioBox dimensions: full width of the window with some spacing
-			ckbH	= 20;	//checkBox/radioBox height: usual size of the text with some spacing
+			lblW	= wWidth-(gW*4), //checkBox/radioBox dimensions: full width of the window with some spacing
+			lblH	= 20;	//checkBox/radioBox height: usual size of the text with some spacing
 		
 		//sets up colors
 		Color	buttonsNumbers	= new Color(232,200,232),
@@ -57,27 +58,28 @@ public class UIBasicIO extends JFrame{
 		
 		
 		
+		//LOCATION SETUP
 		scrText.setBounds		(gW*1,						gH*1,						wWidth-(gW*4),	btnH*4);
-			scrText.setBorder(null);
-			scrText.setHorizontalScrollBarPolicy(
-					JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-			scrText.setVerticalScrollBarPolicy(
-					JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		
 		btnWrite.setBounds		(gW,						gH*2+scrText.getHeight(),	btnW*2,			btnH);
 		btnRead.setBounds		(wWidth-gW*3-btnW*2,		gH*2+scrText.getHeight(),	btnW*2,			btnH);
-			btnWrite.setBorder(null);
-			btnRead.setBorder(null);
-			btnWrite.setBackground(buttonsFunctions);
-			btnRead.setBackground(buttonsFunctions);
-			
-		lblStatus.setBounds		(
-									wWidth/4-btnW-btnW/2,							//X pos
-									gH*3+scrText.getHeight()+btnWrite.getHeight(),	//Y pos
-									wWidth-(gW*4),	//size width
-									btnH			//size height
-								);
-			lblStatus.setBorder(null);
+		lblStatus.setBounds		(gW*1,						gH*3+btnH*5,				lblW,			lblH);
+		
+		//BORDER SETTINGS
+		scrText.setBorder(null);
+		btnWrite.setBorder(null);
+		btnRead.setBorder(null);
+		lblStatus.setBorder(null);
+		
+		btnWrite.setBackground(buttonsFunctions);
+		btnRead.setBackground(buttonsFunctions);
+		
+		//FUNCTIONAL PROPERTY SETTINGS
+		scrText.setHorizontalScrollBarPolicy(
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrText.setVerticalScrollBarPolicy(
+				JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		
+		
 		
 		
 		btnWrite.addActionListener(new ActionListener() {
@@ -89,10 +91,10 @@ public class UIBasicIO extends JFrame{
 					
 					file_write.print(txtaText.getText());
 					
-					file.close();
+					file.close(); //saves and closes the file, but it also overwrites any existing ones
 					lblStatus.setText("Status: Done! :D");
 					
-				} catch(IOException exp) {
+				} catch(IOException exp) {	//if an exception (error) occours at the 'try' block related to writing the file 
 					System.out.println(exp);
 					lblStatus.setText("A writing error occoured");
 					
@@ -100,6 +102,8 @@ public class UIBasicIO extends JFrame{
 					System.out.println(exp);
 					lblStatus.setText("An exception occoured");
 					
+				} finally {
+					//file.close();
 				}
 			}
 			
@@ -114,26 +118,29 @@ public class UIBasicIO extends JFrame{
 					String file_line = null; 
 				     
 					//TODO COMPLETE
-				     while (file_line != null) {
-				        txtaText.setText(
-				        		txtaText.getText() + "\n" +
-				        		(file_line = file_read.readLine())
-				        );
-				     }
-					
+					while (file_line != null) {
+						file_line = file_read.readLine(); //gets the line counting from 0 and stores into file_line
+						
+				    	txtaText.replaceRange(	//replaces the text for implementing lines
+				    			txtaText.getText() + "\n"	//gets what is currently written and breaks a line
+		    					+file_line,					//implements the content of 'file_line'
+		    					0,							//at 
+		    					txtaText.getText().length());
+					}
 					
 					file.close();
 					lblStatus.setText("Reading: Done! :D");
 					
 				} catch(IOException exp) {
 					System.out.println(exp);
-					lblStatus.setText("A writing error occoured");
+					lblStatus.setText("A reading error occoured");
 					
 				} catch(Exception exp) {
 					System.out.println(exp);
 					lblStatus.setText("An exception occoured");
 					
 				}
+		
 			}
 			
 		});

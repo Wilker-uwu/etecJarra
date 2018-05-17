@@ -1,4 +1,4 @@
-package jarraEx8;
+package ui;
 
 import java.awt.Color;
 import java.awt.Container;
