@@ -6,9 +6,12 @@ import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
 import javax.swing.JFrame;
@@ -16,7 +19,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JList;
 
 @SuppressWarnings("serial")
 public class UIBasicIO extends JFrame{
@@ -59,10 +61,13 @@ public class UIBasicIO extends JFrame{
 		
 		
 		//LOCATION SETUP
-		scrText.setBounds		(gW*1,						gH*1,						wWidth-(gW*4),	btnH*4);
-		btnWrite.setBounds		(gW,						gH*2+scrText.getHeight(),	btnW*2,			btnH);
-		btnRead.setBounds		(wWidth-gW*3-btnW*2,		gH*2+scrText.getHeight(),	btnW*2,			btnH);
-		lblStatus.setBounds		(gW*1,						gH*3+btnH*5,				lblW,			lblH);
+		scrText.setBounds		(gW*1,						gH,							wWidth-(gW*4),	btnH*4);
+		btnWrite.setBounds		(gW,						gH+scrText.getY()
+															+scrText.getHeight(),		btnW*2,			btnH);
+		btnRead.setBounds		(wWidth-gW*3-btnW*2,		gH+scrText.getY()
+															+scrText.getHeight(),		btnW*2,			btnH);
+		lblStatus.setBounds		(gW*1,						gH+btnWrite.getY()
+															+btnWrite.getHeight(),			lblW,			lblH);
 		
 		//BORDER SETTINGS
 		scrText.setBorder(null);
@@ -89,7 +94,15 @@ public class UIBasicIO extends JFrame{
 					FileWriter	file		= new FileWriter("examples\\fileoutputs\\BasicIO_output.txt");
 					PrintWriter	file_write	= new PrintWriter(file);
 					
-					file_write.print(txtaText.getText());
+					file_write.print(new BufferedWriter(
+											new OutputStreamWriter(
+													new FileOutputStream(
+															txtaText.getText()
+														),
+													"utf-8"
+												)
+											)
+									);
 					
 					file.close(); //saves and closes the file, but it also overwrites any existing ones
 					lblStatus.setText("Status: Done! :D");
