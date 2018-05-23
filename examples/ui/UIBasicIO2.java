@@ -16,6 +16,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+/*
+ * CONTENT DESCRIPTION:
+ * 	REPLACING LINES WITH ANOTHER CONTENT
+ */
+
 @SuppressWarnings("serial")
 public class UIBasicIO2 extends JFrame{
 	
@@ -29,10 +34,11 @@ public class UIBasicIO2 extends JFrame{
 	JLabel			lblStatus	= new JLabel("Status: idle..."),
 					lblStausExp	= new JLabel();
 	
+	
 	@SuppressWarnings("unused")
-	public UIBasicIO2() {
+	public UIBasicIO2(String name) {
 		
-		super("Window name");
+		super(name);
 		
 		Container pane = this.getContentPane();
 		pane.setLayout(null);
@@ -61,19 +67,22 @@ public class UIBasicIO2 extends JFrame{
 		
 		//LOCATION SETUP
 		txtTextOld.setBounds	(gW*1,						gH*1,							wWidth-(gW*4),	lblH);
-		txtTextNew.setBounds	(gW*1,						gH*2+txtTextOld.getHeight(),	wWidth-(gW*4),	lblH);
+		txtTextNew.setBounds	(gW*1,						gH*1+txtTextOld.getY()
+																+txtTextOld.getHeight(),			wWidth-(gW*4),	lblH);
 		
-		btnWrite.setBounds		(wWidth/3*2-btnW*2,			gH*3+txtTextOld.getHeight()
+		//buttons
+		btnWrite.setBounds		(wWidth/3*2-btnW*2,			gH*1+txtTextNew.getY()
+																+txtTextNew.getHeight(),	btnW,			btnH);
+		btnReplace.setBounds	(wWidth/3*3-btnW*2,			gH*1+txtTextNew.getY()
+																+txtTextNew.getHeight(),	btnW,			btnH);
+		btnRead.setBounds		(wWidth/3*4-btnW*2,			gH*1+txtTextNew.getY()
 																+txtTextNew.getHeight(),	btnW,			btnH);
 		
-		btnReplace.setBounds	(wWidth/3*3-btnW*2,			gH*3+txtTextOld.getHeight()
-																+txtTextNew.getHeight(),	btnW,			btnH);
-		
-		btnRead.setBounds		(wWidth/3*4-btnW*2,			gH*3+txtTextOld.getHeight()
-																+txtTextNew.getHeight(),	btnW,			btnH);
-		//TODO RELATIVE POSITIONS
-		lblStatus.setBounds		(gW*1,						(int)btnRead.getBounds().getHeight()+gH,		lblW,			lblH);
-		lblStausExp.setBounds	(gW*1,						(int)lblStatus.getBounds().getHeight()+gH,		lblW,			lblH);
+		//status labels
+		lblStatus.setBounds		(gW*1,						gH	+btnRead.getY()
+																+btnRead.getHeight(),		lblW,			lblH);
+		lblStausExp.setBounds	(gW*1,						gH	+lblStatus.getY()
+																+lblStatus.getHeight(),		lblW,			lblH);
 		
 		//BORDER SETTINGS
 		btnWrite.setBorder(null);
@@ -105,8 +114,6 @@ public class UIBasicIO2 extends JFrame{
 					System.out.println(exp);
 					lblStatus.setText("An exception occoured");
 					
-				} finally {
-					//file.close();
 				}
 			}
 			
@@ -117,29 +124,54 @@ public class UIBasicIO2 extends JFrame{
 			//TODO REPLACE LINES
 			public void actionPerformed(ActionEvent e) {
 				try {
-					FileReader		file		= new FileReader("examples\\fileoutputs\\BasicIO_output.txt");
-					BufferedReader	file_read	= new BufferedReader(file);
+					//opens and prepares the file for reading
+						FileReader		fileR		= new FileReader("examples\\fileoutputs\\BasicIO_output.txt");
+						BufferedReader	file_read	= new BufferedReader(fileR);
 					
-					//reads the first line
-					String file_line = file_read.readLine(); //think of it as "int f = 0"
-				    
-					//TODO COMPLETE
-					int i=0;
-					while (file_line != null){
-						//gets the line counting from 0 and stores into file_line
-						file_line = file_read.readLine();
+					/* READING THE ENTIRE FILE */
 						
-						if (file_line.compareTo(txtTextOld.getText()) == 0) {
-					    	System.out.println(
-							    			"found at line [" + (i+1) + "]:	"
-							    			+file_line	//prints the line into the console
-							    		);
-					    	file_line = txtTextOld.getText();
+						//reads the first line
+						int i=0;
+						String	file_line		= null, //current line
+								file_lineGroup	= ""; //groups all the lines
+						
+						do {
+							file_lineGroup +=  (file_line = file_read.readLine()) +"\n"; //reads the next line and puts into the group
+							System.out.println("[READING:]\t" +file_line); //prints this line in the console
+							
+						} while(file_line != null); //repeat while there is a line
+						
+						
+						String[] fileContents = file_lineGroup.split("\n"); //splits the group into lines
+						
+						for(String line : fileContents) {
+							System.out.println("[READING DONE:]\t" +line);
 						}
-				    	i++;
-					};
+						
+						fileR.close(); //closes the file.
+					/* READING END */
 					
-					file.close();
+					
+					//opens and prepares the file for writing
+						FileWriter		fileW		= new FileWriter("examples\\fileoutputs\\BasicIO_output.txt");
+						PrintWriter		file_write	= new PrintWriter(fileW);
+						
+					/* WRITING THE CHANGES */
+						
+						for(String line : fileContents) { //repeats for every entry in the array of 'fileContents'
+							if(line.equals(null)) {
+								continue; 
+							}
+							
+							if(line.contains(txtTextOld.getText())) { //compares if the line is equals to the search
+								line = txtTextNew.getText(); //if so, replaces with the chosen text
+							}
+							file_write.println(line); //writes the line
+							System.out.println("[WRITING:]\t" +line);
+						}
+						
+						fileW.close();
+					/* WRITING END */
 					lblStatus.setText("Reading: Done! :D");
 					
 				} catch(IOException exp) {
@@ -219,7 +251,7 @@ public class UIBasicIO2 extends JFrame{
 	
 	public static void main(String[] args) {
 		@SuppressWarnings("unused")
-		UIBasicIO2 window = new UIBasicIO2();
+		UIBasicIO2 window = new UIBasicIO2("UI_BASIC_IO 2");
 	}
 
 }

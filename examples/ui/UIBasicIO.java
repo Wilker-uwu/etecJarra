@@ -17,6 +17,11 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+/*
+ * CONTENT DESCRIPTION:
+ * 	READING AND WRITING TEXT FILES
+ */
+
 @SuppressWarnings("serial")
 public class UIBasicIO extends JFrame{
 	
@@ -28,9 +33,9 @@ public class UIBasicIO extends JFrame{
 	JLabel			lblStatus	= new JLabel("Status: idle...");
 	
 	@SuppressWarnings("unused")
-	public UIBasicIO() {
+	public UIBasicIO(String name) {
 		
-		super("Window name");
+		super(name);
 		
 		Container pane = this.getContentPane();
 		pane.setLayout(null);
@@ -80,7 +85,6 @@ public class UIBasicIO extends JFrame{
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrText.setVerticalScrollBarPolicy(
 				JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		
 		
 		
 		//WRITE button: writes the text from the textArea box to a file
@@ -175,7 +179,7 @@ public class UIBasicIO extends JFrame{
 	
 	public static void main(String[] args) {
 		@SuppressWarnings("unused")
-		UIBasicIO window = new UIBasicIO();
+		UIBasicIO window = new UIBasicIO("UI_BASIC_IO 1");
 	}
 
 }
