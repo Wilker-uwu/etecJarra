@@ -6,12 +6,9 @@ import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
 import javax.swing.JFrame;
@@ -23,7 +20,7 @@ import javax.swing.JLabel;
 @SuppressWarnings("serial")
 public class UIBasicIO extends JFrame{
 	
-	JTextArea		txtaText	= new JTextArea("PLACEHOLDER TEXT");
+	JTextArea		txtaText	= new JTextArea("PLACEHOLDER TEXT",0,0);
 		JScrollPane	scrText		= new JScrollPane(txtaText);
 		
 	JButton			btnWrite	= new JButton("Write!");
@@ -86,33 +83,37 @@ public class UIBasicIO extends JFrame{
 		
 		
 		
-		
+		//WRITE button: writes the text from the textArea box to a file
 		btnWrite.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 				try {
+					//selects a ¹file named ²"BasicIO_Output.txt" to write at.
+					//¹it creates a new file if not existent, but not the folder.
+					//²if the exact location is not specified, the root directory OF the JAR file is selected
 					FileWriter	file		= new FileWriter("examples\\fileoutputs\\BasicIO_output.txt");
-					PrintWriter	file_write	= new PrintWriter(file);
 					
-					file_write.print(new BufferedWriter(
-											new OutputStreamWriter(
-													new FileOutputStream(
-															txtaText.getText()
-														),
-													"utf-8"
-												)
-											)
-									);
+					//sets up the methods for writing things in the file
+					PrintWriter	file_write	= new PrintWriter(file, //:the file it will be writing
+																false); //:'true' to continue writing the existing file
+					
+					String[] file_line = //creates an array of strings,
+							txtaText.getText()	 //where it takes the text written in the box
+							.split("\n");		//and adds a new registry to the string at each line break
+					
+					for(String line : file_line) { //for each line that was taken from the box,
+						file_write.println(line); //prints out a line on the file ^-^
+					};
 					
 					file.close(); //saves and closes the file, but it also overwrites any existing ones
 					lblStatus.setText("Status: Done! :D");
 					
-				} catch(IOException exp) {	//if an exception (error) occours at the 'try' block related to writing the file 
-					System.out.println(exp);
-					lblStatus.setText("A writing error occoured");
+				} catch(IOException exp) {	//if an exception (error) occurs at the 'try' block related to writing the file, 
+					System.out.println(exp); //prints the error in the console
+					lblStatus.setText("A writing error occoured"); //sends an error message to the user
 					
-				} catch(Exception exp) {
-					System.out.println(exp);
+				} catch(Exception exp) { //if an exception other than IOException happens,
+					System.out.println(exp); //does the same thing
 					lblStatus.setText("An exception occoured");
 					
 				} finally {
