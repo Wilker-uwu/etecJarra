@@ -22,9 +22,11 @@ public class SYSStringManipulations {
 	
 		System.out.println("\n");	//skips two lines
 		
-		String myString= "hello world";
-		System.out.println("string lenght:\t"	+myString.length()			); //prints the length of myString
-		System.out.println("sub:\t\t"			+myString.substring(0,10)	); //prints part of myString
-		System.out.println("5� pos:\t\t"			+myString.charAt(9)			); //prints the character at position 9 of myString (counts from 0)
+		String myString= " hello world	"; //"\[space]hello\[space]world\t"
+		System.out.println("string lenght:\t\t"		+myString.length()					); //prints the length of myString
+		System.out.println("sub:\t\t\t"				+myString.substring(0,10)			); //prints part of myString
+		System.out.println("5� pos:\t\t\t"			+myString.charAt(9)					); //prints the character at position 9 of myString (counts from 0)
+		System.out.println("string replace:\t\t"	+myString.replace("l","w")			); //replaces every "l" with "w"
+		System.out.println("String trimming:\t"		+myString.trim()					); //trims any spaces at the end or the beginning of 'myString'
 	}
 }

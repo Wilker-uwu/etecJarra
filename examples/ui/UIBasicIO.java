@@ -106,7 +106,7 @@ public class UIBasicIO extends JFrame{
 							.split("\n");		//and adds a new registry to the string at each line break
 					
 					for(String line : file_line) { //for each line that was taken from the box,
-						file_write.println(line); //prints out a line on the file ^-^
+						file_write.print(line); //prints out a line on the file ^-^ ("\n" is already included)
 					};
 					
 					file.close(); //saves and closes the file, but it also overwrites any existing ones

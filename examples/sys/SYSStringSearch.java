@@ -37,16 +37,5 @@ public class SYSStringSearch {
 		
 		
 		System.out.println();
-		
-		
-		str= str.trim();				//remove espços do início e final da string "str"
-		System.out.println(str);		//imprime "str" com espa�os cortados da linha
-		
-		
-		System.out.println();
-		
-		
-		str= str.replace("owo w","OwO W");		//substitui procura e substitui "owo w" com "OwO W" em "str" 
-		System.out.println(str);				//imprime "OwO What's this?"
 	}
 }
