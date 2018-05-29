@@ -25,12 +25,14 @@ import javax.swing.JLabel;
 @SuppressWarnings("serial")
 public class UIBasicIO extends JFrame{
 	
-	JTextArea		txtaText	= new JTextArea("PLACEHOLDER TEXT",0,0);
-		JScrollPane	scrText		= new JScrollPane(txtaText);
+	JTextArea		txtaText		= new JTextArea("PLACEHOLDER TEXT",0,0);
+		JScrollPane	scrText			= new JScrollPane(txtaText);
 		
-	JButton			btnWrite	= new JButton("Write!");
-	JButton			btnRead		= new JButton("Read");
-	JLabel			lblStatus	= new JLabel("Status: idle...");
+	JButton			btnWrite		= new JButton("Write!"),
+					btnRead			= new JButton("Read");
+	
+	JLabel			lblStatus		= new JLabel("Status: idle..."),
+					lblStatusExp	= new JLabel();
 	
 	@SuppressWarnings("unused")
 	public UIBasicIO(String name) {
@@ -63,13 +65,16 @@ public class UIBasicIO extends JFrame{
 		
 		
 		//LOCATION SETUP
-		scrText.setBounds		(gW*1,						gH,							wWidth-(gW*4),	btnH*4);
-		btnWrite.setBounds		(gW,						gH+scrText.getY()
-															+scrText.getHeight(),		btnW*2,			btnH);
-		btnRead.setBounds		(wWidth-gW*3-btnW*2,		gH+scrText.getY()
-															+scrText.getHeight(),		btnW*2,			btnH);
-		lblStatus.setBounds		(gW*1,						gH+btnWrite.getY()
-															+btnWrite.getHeight(),			lblW,			lblH);
+			scrText.setBounds		(gW*1,						gH,									wWidth-(gW*4),	btnH*4);
+			btnWrite.setBounds		(gW,						gH	+scrText.getY()
+																	+scrText.getHeight(),			btnW*2,			btnH);
+			btnRead.setBounds		(wWidth-gW*3-btnW*2,		btnWrite.getY(),					btnW*2,			btnH);
+			
+		//status labels
+			lblStatus.setBounds		(gW*1,						gH	+btnRead.getY()
+																	+btnRead.getHeight(),		lblW,				lblH);
+			lblStatusExp.setBounds	(gW*1,						lblStatus.getY()
+																	+lblStatus.getHeight(),		lblW,				lblH);
 		
 		//BORDER SETTINGS
 		scrText.setBorder(null);
@@ -106,7 +111,7 @@ public class UIBasicIO extends JFrame{
 							.split("\n");		//and adds a new registry to the string at each line break
 					
 					for(String line : file_line) { //for each line that was taken from the box,
-						file_write.print(line); //prints out a line on the file ^-^ ("\n" is already included)
+						file_write.println(line); //prints out a line on the file ^-^ ("\n" is already included)
 					};
 					
 					file.close(); //saves and closes the file, but it also overwrites any existing ones
@@ -169,12 +174,14 @@ public class UIBasicIO extends JFrame{
 		pane.add(btnWrite);
 		pane.add(btnRead);
 		pane.add(lblStatus);
+		pane.add(lblStatusExp);
 		
-		pane.setBackground(bgColor);						//sets the background color
-		this.setVisible(true);							   //makes the window visible
-		this.setSize(wWidth, wHeight);					  //gathers wWidth and wHeight to set the window size
-		this.setLocationRelativeTo(null);				 //sets location relative to nothing, so it uses the center of the screen by default
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);	//closes the application process "javaw.exe" when the window is closed
+		pane.setBackground(bgColor);							 //sets the background color
+		this.setVisible(true);								    //makes the window visible
+		this.setSize(wWidth,	gH*2+lblStatusExp.getY()
+								+lblStatusExp.getHeight());   //gathers wWidth and wHeight to set the window size
+		this.setLocationRelativeTo(null);					 //sets location relative to nothing, so it uses the center of the screen by default
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);		//closes the application process "javaw.exe" when the window is closed
 	}
 	
 	public static void main(String[] args) {

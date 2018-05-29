@@ -24,16 +24,16 @@ import javax.swing.JTextField;
 @SuppressWarnings("serial")
 public class UIBasicIO2 extends JFrame{
 	
-	JTextField		txtTextOld	= new JTextField("SEARCH_TEXT"),
-					txtTextLine	= new JTextField(),
-					txtTextNew	= new JTextField("NEW_TEXT");
+	JTextField		txtTextOld		= new JTextField("SEARCH_TEXT"),
+					txtTextLine		= new JTextField(),
+					txtTextNew		= new JTextField("NEW_TEXT");
 		
-	JButton			btnWrite	= new JButton("Write!"),
-					btnReplace	= new JButton("Replace"),
-					btnRead		= new JButton("Read");
+	JButton			btnWrite		= new JButton("Write!"),
+					btnReplace		= new JButton("Replace"),
+					btnRead			= new JButton("Read");
 	
-	JLabel			lblStatus	= new JLabel("Status: idle..."),
-					lblStausExp	= new JLabel();
+	JLabel			lblStatus		= new JLabel("Status: idle..."),
+					lblStatusExp	= new JLabel();
 	
 	
 	@SuppressWarnings("unused")
@@ -88,7 +88,7 @@ public class UIBasicIO2 extends JFrame{
 		//status labels
 		lblStatus.setBounds		(gW*1,							gH	+btnRead.getY()
 																	+btnRead.getHeight(),			lblW,				lblH);
-		lblStausExp.setBounds	(gW*1,							gH	+lblStatus.getY()
+		lblStatusExp.setBounds	(gW*1,							gH	+lblStatus.getY()
 																	+lblStatus.getHeight(),			lblW,				lblH);
 		
 		//BORDER SETTINGS
@@ -194,7 +194,7 @@ public class UIBasicIO2 extends JFrame{
 									
 								} catch(Exception exp) {
 									lblStatus.setText("there is no such line."); //assuming the user inserted a line that doesn't exist
-									lblStausExp.setText(exp + ""); //shows exception to the user
+									lblStatusExp.setText(exp + ""); //shows exception to the user
 									
 									System.out.println(exp); //prints the exception
 									exp.printStackTrace();  //and other stuff about
@@ -206,7 +206,7 @@ public class UIBasicIO2 extends JFrame{
 									
 								} catch(Exception exp) {
 									lblStatus.setText("there is no such line.");
-									lblStausExp.setText(exp + ""); //shows exception to the user
+									lblStatusExp.setText(exp + ""); //shows exception to the user
 									
 									System.out.println(exp); //prints the exception
 									exp.printStackTrace();  //and other stuff about
@@ -219,7 +219,7 @@ public class UIBasicIO2 extends JFrame{
 							
 							lblStatus.setText(	 "You must only write numbers\n"
 												+"at the number space.");
-							lblStausExp.setText(exp + "");
+							lblStatusExp.setText(exp + "");
 							
 							
 							fileW.close(); //closes the file.
@@ -247,14 +247,14 @@ public class UIBasicIO2 extends JFrame{
 					exp.printStackTrace();  //and other stuff about
 					
 					lblStatus.setText("A reading error occoured.");
-					lblStausExp.setText(exp + "");
+					lblStatusExp.setText(exp + "");
 					
 				} catch(Exception exp) {
 					System.out.println(exp); //prints the exception
 					exp.printStackTrace();  //and other stuff about
 					
 					lblStatus.setText("An exception occoured.");
-					lblStausExp.setText(exp + "");
+					lblStatusExp.setText(exp + "");
 					
 				}
 		
@@ -313,7 +313,7 @@ public class UIBasicIO2 extends JFrame{
 		pane.add(btnReplace);
 		pane.add(btnRead);
 		pane.add(lblStatus);
-		pane.add(lblStausExp);
+		pane.add(lblStatusExp);
 		
 		pane.setBackground(bgColor);						//sets the background color
 		this.setVisible(true);							   //makes the window visible
