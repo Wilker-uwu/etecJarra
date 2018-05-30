@@ -147,6 +147,7 @@ public class UIBasicIO2 extends JFrame{
 						String	textSearch	= txtTextOld.getText(),
 								textReplace	= txtTextNew.getText(),
 								textLine	= txtTextLine.getText();
+						
 						int		targetLine	= -1;
 					
 					/* READING THE ENTIRE FILE */
@@ -182,12 +183,53 @@ public class UIBasicIO2 extends JFrame{
 						//tries to overwrite an specific line
 						
 						/*
-						 * TODO TEST
+						 * TODO Complete refactor and test
 						 */
 						
-						try {
-							targetLine = Integer.parseInt(textLine); //gathers the number
+						try { //tries to replace
+							try {
+								targetLine = Integer.parseInt(textLine); //gathers the number
+								
+								try {
+									if(textSearch.equals("")) {
+										fileContents[targetLine] = textReplace;
+									}
+								} catch(Exception exp) {
+									System.out.println(exp); //prints the exception
+									exp.printStackTrace();  //and other stuff about
+									
+									lblStatus.setText("An exception occoured.");
+									lblStatusExp.setText(exp + "");
+								}
+								
+							} catch (NumberFormatException exp) {
+								//ignore and keeps the value as -1
+								lblStatusExp.setText("note: line entry is invalid.");
+								
+								if(textSearch.equals("")) { //if there is NO search criteria
+									if(textReplace.equals("")) { //and if there are no replacement arguments
+										lblStatus.setText("Error: you should write something."); //then it shows an error message to the user
+										
+									} else { //otherwise, if there ARE replacement arguments,
+										
+										for(String fileLine : fileContents) { //repeats for every line in the document...
+											if(fileLine.equals(textReplace //if the line of the document is the same as the replacement
+													.replace("\n", "") //without line breaks
+											)) {
+												
+												fileLine.replace(fileLine, textReplace); //replaces the text with the replacement
+												
+											}
+										}
+										
+									}
+								}
+							}
 							
+							
+							
+							/*
+							 * TODO UNUSED
 							if (textSearch.equals("")) { //if there is NO specification on what to replace
 								try { //tries to replace the entry
 									fileContents[targetLine] = textReplace; //replaces the entire entry
@@ -204,13 +246,26 @@ public class UIBasicIO2 extends JFrame{
 								try {
 									fileContents[targetLine].replace(textSearch, textReplace);
 									
-								} catch(Exception exp) {
-									lblStatus.setText("there is no such line.");
+								} catch(Exception exp) { //if an exception happens
+									lblStatus.setText("there is no such line."); //shows an error message, assuming the user entered an invalid line
 									lblStatusExp.setText(exp + ""); //shows exception to the user
 									
 									System.out.println(exp); //prints the exception
 									exp.printStackTrace();  //and other stuff about
 								}
+							}
+							*/
+							
+							for(String line : fileContents) { //repeats for every entry in the array of 'fileContents'
+								if(line.equals(null)) { //if the line is null
+									continue; //re-do the loop
+								}
+								
+								if(line.contains(txtTextOld.getText())) { //compares if the line is equals to the search
+									line = txtTextNew.getText(); //if so, replaces with the chosen text
+								}
+								file_write.println(line); //writes the line ("\n" included)
+								System.out.println("[WRITING:]\t" +line);
 							}
 							
 						} catch(Exception exp) {
@@ -222,25 +277,14 @@ public class UIBasicIO2 extends JFrame{
 							lblStatusExp.setText(exp + "");
 							
 							
-							fileW.close(); //closes the file.
-							return; //ends the button function
-						}
-						
-						for(String line : fileContents) { //repeats for every entry in the array of 'fileContents'
-							if(line.equals(null)) {
-								continue; 
-							}
 							
-							if(line.contains(txtTextOld.getText())) { //compares if the line is equals to the search
-								line = txtTextNew.getText(); //if so, replaces with the chosen text
-							}
-							file_write.println(line); //writes the line ("\n" included)
-							System.out.println("[WRITING:]\t" +line);
+						} finally {
+							fileW.close(); //closes the file.
 						}
 						
-						fileW.close();
+						
 					/* WRITING END */
-					lblStatus.setText("Reading: Done! :D");
+					lblStatus.setText("Replacing: Done! :D");
 					
 				} catch(IOException exp) {
 					System.out.println(exp); //prints the exception
@@ -291,12 +335,18 @@ public class UIBasicIO2 extends JFrame{
 					lblStatus.setText("Reading: Done! :D");
 					
 				} catch(IOException exp) {
-					System.out.println(exp);
-					lblStatus.setText("A reading error occoured");
+					System.out.println(exp); //prints the exception
+					exp.printStackTrace();  //and other stuff about
+					
+					lblStatus.setText("A reading error occoured.");
+					lblStatusExp.setText(exp + "");
 					
 				} catch(Exception exp) {
-					System.out.println(exp);
-					lblStatus.setText("An exception occoured");
+					System.out.println(exp); //prints the exception
+					exp.printStackTrace();  //and other stuff about
+					
+					lblStatus.setText("An exception occoured.");
+					lblStatusExp.setText(exp + "");
 					
 				}
 		
@@ -315,9 +365,10 @@ public class UIBasicIO2 extends JFrame{
 		pane.add(lblStatus);
 		pane.add(lblStatusExp);
 		
-		pane.setBackground(bgColor);						//sets the background color
-		this.setVisible(true);							   //makes the window visible
-		this.setSize(wWidth, wHeight);					  //gathers wWidth and wHeight to set the window size
+		pane.setBackground(bgColor);						 //sets the background color
+		this.setVisible(true);								//makes the window visible
+		this.setSize(wWidth, wHeight);					   //gathers wWidth and wHeight to set the window size
+		this.setResizable(false);						  //locks the window size
 		this.setLocationRelativeTo(null);				 //sets location relative to nothing, so it uses the center of the screen by default
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);	//closes the application process "javaw.exe" when the window is closed
 	}
@@ -327,4 +378,9 @@ public class UIBasicIO2 extends JFrame{
 		UIBasicIO2 window = new UIBasicIO2("UI_BASIC_IO 2");
 	}
 
+}
+
+@SuppressWarnings("serial")
+class UIRead extends JFrame{
+	//TODO This is going to be a window that shows the file contents
 }

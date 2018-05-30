@@ -65,10 +65,10 @@ public class UIBasicIO extends JFrame{
 		
 		
 		//LOCATION SETUP
-			scrText.setBounds		(gW*1,						gH,									wWidth-(gW*4),	btnH*4);
+			scrText.setBounds		(gW*1,						gH,									wWidth-(gW*3),	btnH*4);
 			btnWrite.setBounds		(gW,						gH	+scrText.getY()
 																	+scrText.getHeight(),			btnW*2,			btnH);
-			btnRead.setBounds		(wWidth-gW*3-btnW*2,		btnWrite.getY(),					btnW*2,			btnH);
+			btnRead.setBounds		(wWidth-gW*2-btnW*2,		btnWrite.getY(),					btnW*2,			btnH);
 			
 		//status labels
 			lblStatus.setBounds		(gW*1,						gH	+btnRead.getY()
@@ -180,6 +180,7 @@ public class UIBasicIO extends JFrame{
 		this.setVisible(true);								    //makes the window visible
 		this.setSize(wWidth,	gH*2+lblStatusExp.getY()
 								+lblStatusExp.getHeight());   //gathers wWidth and wHeight to set the window size
+		this.setResizable(false);
 		this.setLocationRelativeTo(null);					 //sets location relative to nothing, so it uses the center of the screen by default
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);		//closes the application process "javaw.exe" when the window is closed
 	}
