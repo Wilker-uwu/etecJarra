@@ -96,10 +96,12 @@ public class UIBasicIO2 extends JFrame{
 		btnReplace.setBorder(null);
 		btnRead.setBorder(null);
 		lblStatus.setBorder(null);
+		lblStatusExp.setBorder(null);
 		
 		btnWrite.setBackground(buttonsFunctions);
 		btnReplace.setBackground(buttonsFunctions);
 		btnRead.setBackground(buttonsFunctions);
+		
 		
 		//WRITE button: writes the text from the textArea box to a file
 		btnWrite.addActionListener(new ActionListener() {
@@ -190,16 +192,15 @@ public class UIBasicIO2 extends JFrame{
 							try {
 								targetLine = Integer.parseInt(textLine); //gathers the number
 								
-								try {
-									if(textSearch.equals("")) {
-										fileContents[targetLine] = textReplace;
-									}
-								} catch(Exception exp) {
-									System.out.println(exp); //prints the exception
-									exp.printStackTrace();  //and other stuff about
+								if(textReplace.equals("")) {
+									lblStatusExp.setText("note: empty will only empty the lines. for null, type %NULL");
 									
-									lblStatus.setText("An exception occoured.");
-									lblStatusExp.setText(exp + "");
+								} else if(textReplace.equalsIgnoreCase("%NULL")) {
+									textReplace = null;
+								}
+								
+								if(textSearch.equals("")) {
+									fileContents[targetLine] = textReplace;
 								}
 								
 							} catch (NumberFormatException exp) {
