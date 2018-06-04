@@ -1,4 +1,4 @@
-package jarraEx5;
+package jarra.ex5;
 
 import java.util.Scanner;
 
@@ -9,7 +9,7 @@ public class JarraEx5_3 {
 	public static void main(String[] args) {
 		in = new Scanner(System.in);
 		
-		System.out.print("insira número: ");
+		System.out.print("insira nï¿½mero: ");
 		int num = in.nextInt();
 		
 		for(int i=1; i<11; i++) {

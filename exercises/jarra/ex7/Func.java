@@ -1,4 +1,4 @@
-package jarraEx7;
+package jarra.ex7;
 
 public class Func {
 	

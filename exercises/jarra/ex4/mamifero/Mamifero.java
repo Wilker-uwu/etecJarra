@@ -1,8 +1,8 @@
-package JarraEx4.mamifero;
+package jarra.ex4.mamifero;
 
-/* MAMÍFEROS*/
+/* MAMï¿½FEROS*/
 @SuppressWarnings("unused")
-public class Mamifero extends JarraEx4.animal.Animal {
+public class Mamifero extends jarra.ex4.animal.Animal {
 	
 	private int Velocidade;
 	

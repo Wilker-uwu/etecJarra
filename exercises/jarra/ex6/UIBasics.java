@@ -1,4 +1,4 @@
-package jarraEx6;
+package jarra.ex6;
 
 import java.awt.Container;
 
@@ -14,7 +14,7 @@ public class UIBasics extends JFrame{
 	//sets up text container contents
 	JLabel		lblTitle	= new JLabel("Preencha os campos e clique em \"Gravar dados\"");
 	JLabel		lblName		= new JLabel("Nome:");
-	JLabel		lblAddress	= new JLabel("Endereço:");
+	JLabel		lblAddress	= new JLabel("Endereï¿½o:");
 	JLabel		lblDistrict	= new JLabel("Bairro:");
 	JLabel		lblState	= new JLabel("Estado:");
 	JLabel		lblPhone	= new JLabel("Telefone:");

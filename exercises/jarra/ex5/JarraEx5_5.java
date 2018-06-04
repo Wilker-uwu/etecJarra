@@ -1,4 +1,4 @@
-package jarraEx5;
+package jarra.ex5;
 
 import java.util.Scanner;
 
@@ -20,7 +20,7 @@ public class JarraEx5_5 {
 			}
 		}
 		
-		System.out.println("\no maior número inserido é " + x);
+		System.out.println("\no maior nï¿½mero inserido ï¿½ " + x);
 	}
 
 }

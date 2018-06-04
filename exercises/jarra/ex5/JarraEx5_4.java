@@ -1,8 +1,8 @@
-package jarraEx5;
+package jarra.ex5;
 
 import java.util.Scanner;
 
-//TODO fix (exiba números pares entre os valores que o usuário digitar)
+//TODO fix (exiba nï¿½meros pares entre os valores que o usuï¿½rio digitar)
 public class JarraEx5_4 {
 
 	private static Scanner in;
@@ -11,19 +11,19 @@ public class JarraEx5_4 {
 		
 		in = new Scanner(System.in);
 		
-		System.out.println("insira início e fim:");
+		System.out.println("insira inï¿½cio e fim:");
 		int[] num= {in.nextInt(),in.nextInt()};
 		
 		if(num[0]>=num[1]) {
 			for(int i=num[0]; num[0]>=num[1]; i--) {
 				if(i%2 == 0) {
-					System.out.println(i + " é par.");
+					System.out.println(i + " ï¿½ par.");
 				}
 			}
 		} else {
 			for(int i=num[1]; num[1]>=num[0]; i--) {
 				if(i%2 == 0) {
-					System.out.println(i + " é par.");
+					System.out.println(i + " ï¿½ par.");
 				}
 			}
 		}
