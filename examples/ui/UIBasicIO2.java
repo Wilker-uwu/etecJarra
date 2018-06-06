@@ -193,72 +193,52 @@ public class UIBasicIO2 extends JFrame{
 								targetLine = Integer.parseInt(textLine); //gathers the number
 								
 								if(textReplace.equals("")) {
-									lblStatusExp.setText("note: empty will only empty the lines. for null, type %NULL");
+									lblStatusExp.setText("error: missing replacement text");
+									fileW.close();
+									return;
 									
-								} else if(textReplace.equalsIgnoreCase("%NULL")) {
-									textReplace = null;
-								}
-								
-								if(textSearch.equals("")) {
-									fileContents[targetLine] = textReplace;
-								}
-								
-							} catch (NumberFormatException exp) {
-								//ignore and keeps the value as -1
-								lblStatusExp.setText("note: line entry is invalid.");
-								
-								if(textSearch.equals("")) { //if there is NO search criteria
-									if(textReplace.equals("")) { //and if there are no replacement arguments
-										lblStatus.setText("Error: you should write something."); //then it shows an error message to the user
+								} else if(targetLine > 0) { //if there is a criteria for a text line
+									if(textReplace.equalsIgnoreCase("%NULL")) {
+										fileContents[targetLine-1] = null; //replace this line
 										
-									} else { //otherwise, if there ARE replacement arguments,
-										
+									} else {
 										for(String fileLine : fileContents) { //repeats for every line in the document...
-											if(fileLine.equals(textReplace //if the line of the document is the same as the replacement
-													.replace("\n", "") //without line breaks
-											)) {
-												
+											if(fileLine.equals(textReplace)) { //if the line of the document is the same as the replacement
 												fileLine.replace(fileLine, textReplace); //replaces the text with the replacement
 												
 											}
 										}
+									}
+									
+								}
+								
+								
+								
+							} catch (NumberFormatException exp) {
+								//ignore and keeps the value as -1
+								if(!textLine.equals("")) {
+									lblStatusExp.setText("note: line entry is invalid.");
+								}
+								
+								if(textSearch.equals("")) { //if there is NO search criteria
+									if(textReplace.equals("")) { //and if there are no replacement arguments
+										lblStatus.setText("Error: you should write something."); //then it shows an error message to the user
+										fileW.close();
+										return;
 										
+									} else { //otherwise, if there ARE replacement arguments,
+										for(String fileLine : fileContents) { //repeats for every line in the document...
+											if(fileLine.equals(textReplace)) { //if the line of the document is the same as the replacement
+												fileLine.replace(fileLine, textReplace); //replaces the text with the replacement
+												
+											}
+										}
 									}
 								}
 							}
 							
-							
-							
-							/*
-							 * TODO UNUSED
-							if (textSearch.equals("")) { //if there is NO specification on what to replace
-								try { //tries to replace the entry
-									fileContents[targetLine] = textReplace; //replaces the entire entry
-									
-								} catch(Exception exp) {
-									lblStatus.setText("there is no such line."); //assuming the user inserted a line that doesn't exist
-									lblStatusExp.setText(exp + ""); //shows exception to the user
-									
-									System.out.println(exp); //prints the exception
-									exp.printStackTrace();  //and other stuff about
-								}
-								
-							} else { //otherwise there IS a search criteria
-								try {
-									fileContents[targetLine].replace(textSearch, textReplace);
-									
-								} catch(Exception exp) { //if an exception happens
-									lblStatus.setText("there is no such line."); //shows an error message, assuming the user entered an invalid line
-									lblStatusExp.setText(exp + ""); //shows exception to the user
-									
-									System.out.println(exp); //prints the exception
-									exp.printStackTrace();  //and other stuff about
-								}
-							}
-							*/
-							
 							for(String line : fileContents) { //repeats for every entry in the array of 'fileContents'
-								if(line.equals(null)) { //if the line is null
+								if(line == null) { //if the line is null
 									continue; //re-do the loop
 								}
 								
