@@ -1,8 +1,8 @@
-package jarra.ex5;
+package jarraEx5;
 
 import java.util.Scanner;
 
-//TODO fix (exiba nï¿½meros ï¿½mpares entre os valores que o usuï¿½rio digitar)
+//TODO fix (exiba números ímpares entre os valores que o usuário digitar)
 public class JarraEx5_2 {
 
 	private static Scanner in;
@@ -11,19 +11,19 @@ public class JarraEx5_2 {
 		
 		in = new Scanner(System.in);
 		
-		System.out.println("insira inï¿½cio e fim:");
+		System.out.println("insira início e fim:");
 		int[] num= {in.nextInt(),in.nextInt()};
 		
 		if(num[0]>=num[1]) {
 			for(int i=num[0]; num[0]>=num[1]; i--) {
 				if(i%2 != 0) {
-					System.out.println(i + " ï¿½ ï¿½mpar.");
+					System.out.println(i + " é ímpar.");
 				}
 			}
 		} else {
 			for(int i=num[1]; num[1]>=num[0]; i--) {
 				if(i%2 != 0) {
-					System.out.println(i + " ï¿½ ï¿½mpar.");
+					System.out.println(i + " é ímpar.");
 				}
 			}
 		}

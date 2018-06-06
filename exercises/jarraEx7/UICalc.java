@@ -1,4 +1,4 @@
-package jarra.ex7;
+package jarraEx7;
 
 import java.awt.Color;
 import java.awt.Container;

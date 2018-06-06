@@ -1,5 +1,6 @@
-package ui.old;
+package ui;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,9 +12,6 @@ import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-
-import ui.Appearance;
-
 import javax.swing.JDesktopPane;
 
 
@@ -31,7 +29,7 @@ public class UIInternalFrame extends JFrame{
 
 
 @SuppressWarnings("serial")
-class WindowFrame extends JFrame implements Appearance{
+class WindowFrame extends JFrame {
 	
 	JMenuBar		tlbFile					= new JMenuBar();	//creates a tool bar named "tlbFile"
 		JMenu			menuFile			= new JMenu("File...");
@@ -50,12 +48,12 @@ class WindowFrame extends JFrame implements Appearance{
 		pane.setLayout(null);
 		final JDesktopPane desktop = new JDesktopPane();
 	    
-		//TODO stop being dumb
-		tlbFile.setBounds			(0,	0,					wWidth*3,	tlbH);
+		
+		tlbFile.setBounds			(0,	0,					Appearance.wWidth*3,	Appearance.tlbH);
 			tlbFile.setBorder(null);
-		desktop.setBounds			(0,	tlbH,	wWidth*3,	wHeight*2-tlbH);
+		desktop.setBounds			(0,	Appearance.tlbH,	Appearance.wWidth*3,	Appearance.wHeight*2-Appearance.tlbH);
 			desktop.setBorder(null);
-			desktop.setBackground(bgColor);
+			desktop.setBackground(Appearance.bgColor);
 			
 		
 		
@@ -87,9 +85,9 @@ class WindowFrame extends JFrame implements Appearance{
 				System.exit(0);	//closes the application
 			}
 		});
-		pane.setBackground(bgColor);						//sets the background color
+		pane.setBackground(Appearance.bgColor);						//sets the background color
 		this.setVisible(true);									   //makes the window visible
-		this.setSize(wWidth*3, wHeight*2);  //gathers wWidth and wHeight to set the window size
+		this.setSize(Appearance.wWidth*3, Appearance.wHeight*2);  //gathers wWidth and wHeight to set the window size
 		this.setLocationRelativeTo(null);						 //sets location relative to nothing, so it uses the center of the screen by default
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);			//closes the application process "javaw.exe" when the window is closed
 	}
@@ -97,7 +95,7 @@ class WindowFrame extends JFrame implements Appearance{
 }
 
 @SuppressWarnings("serial")
-class SubFrame extends JInternalFrame implements Appearance{
+class SubFrame extends JInternalFrame {
 	
 	public SubFrame(String wName, int pos, int width, int height) {
 		
@@ -105,7 +103,10 @@ class SubFrame extends JInternalFrame implements Appearance{
 		Container pane = this.getContentPane();
 		pane.setLayout(null);
 		
-		pane.setBackground(bgsColor);	//sets the background color
+		
+		
+		
+		pane.setBackground(Appearance.bgsColor);	//sets the background color
 		this.setVisible(true);						//makes the window visible
 		this.setLocation(pos, pos);	
 		this.setSize(width, height);	 //gathers wWidth and wHeight to set the window size
@@ -128,4 +129,27 @@ class SubFrame extends JInternalFrame implements Appearance{
 	private void windowFocus() {
 		this.toFront(); //pulls the window to the front of the others
 	}
+}
+
+final class Appearance {
+	//sets up the grid
+	static int	gW		= 8,	//horizontal grid to ease coordinate usage
+				gH		= 8,	//vertical grid
+				
+				tlbH	= 22,
+				btnW	= gW*4,	//default button dimensions
+				btnH	= 26,	//vertical button dimension
+				
+				wWidth	= (btnW*3+gW*16),	//width of the window, uses the buttons and grid dimensions for a better layout
+				wHeight = (btnH*8+gH*11),	//height of the window
+				
+				ckbW	= wWidth-(gW*4), //checkBox/radioBox dimensions: full width of the window with some spacing
+				ckbH	= 20;	//checkBox/radioBox height: usual size of the text with some spacing
+	
+	//sets up colors
+	static Color	buttonsNumbers	= new Color(232,200,232),
+					buttonsMemory	= new Color(190,190,232),
+					buttonsFunctions= new Color(210,210,232),
+					bgColor			= new Color(186,255,223),
+					bgsColor		= new Color(223,223,223);;
 }

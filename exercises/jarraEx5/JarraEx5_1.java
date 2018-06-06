@@ -1,4 +1,4 @@
-package jarra.ex5;
+package jarraEx5;
 
 public class JarraEx5_1 {
 
@@ -6,7 +6,7 @@ public class JarraEx5_1 {
 
 		for(int i=11; i<251; i++) {
 			if(i%2 == 0) {
-				System.out.println(i + " ï¿½ par.");
+				System.out.println(i + " é par.");
 			}
 		}
 		

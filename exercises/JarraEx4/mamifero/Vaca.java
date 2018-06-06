@@ -1,6 +1,6 @@
-package jarra.ex4.mamifero;
+package JarraEx4.mamifero;
 
-/* MAMï¿½FEROS */
+/* MAMÍFEROS */
 @SuppressWarnings("unused")
 class Vaca extends Mamifero {
 	
