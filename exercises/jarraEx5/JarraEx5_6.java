@@ -1,7 +1,7 @@
-package jarra.ex5;
+package jarraEx5;
 
 
-//TODO fix (Escreva um programa que calcule e exiba a mï¿½dia de 10 notas digitadas pelo usuï¿½rio. Considerar notas vï¿½lidas, somente valores entre 0 (zero) e 10 (dez). Se o usuï¿½rio digitar algum valor invï¿½lido, deverï¿½ ser exibida uma mensagem informando o ocorrido. )
+//TODO fix (Escreva um programa que calcule e exiba a média de 10 notas digitadas pelo usuário. Considerar notas válidas, somente valores entre 0 (zero) e 10 (dez). Se o usuário digitar algum valor inválido, deverá ser exibida uma mensagem informando o ocorrido. )
 public class JarraEx5_6 {
 
 	public static void main(String[] args) {

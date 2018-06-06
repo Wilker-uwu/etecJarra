@@ -1,7 +1,7 @@
-package jarra.ex5;
+package jarraEx5;
 
 
-//TODO fix (Escreva um programa que calcule o fatorial de um nï¿½mero informado pelo usuï¿½rio. Dica: O fatorial de um nï¿½mero N ï¿½ dado pela fï¿½rmula: N! = 1 * 2 * 3 * 4 * 5 * ... * N)
+//TODO fix (Escreva um programa que calcule o fatorial de um número informado pelo usuário. Dica: O fatorial de um número N é dado pela fórmula: N! = 1 * 2 * 3 * 4 * 5 * ... * N)
 public class JarraEx5_8 {
 
 	public static void main(String[] args) {

@@ -1,7 +1,7 @@
-package jarra.ex5;
+package jarraEx5;
 
 
-//TODO fix (Escreva um programa que leia vï¿½rios nï¿½meros inteiros e ao final informe quantos nï¿½meros pares, quantos nï¿½meros ï¿½mpares, quantos nï¿½meros positivos e quantos nï¿½meros negativos foram digitados pelo usuï¿½rio. O programa sï¿½ deve parar de rodar quando o usuï¿½rio responder "S" na seguinte pergunta, "Deseja encerrar o programa?".)
+//TODO fix (Escreva um programa que leia vários números inteiros e ao final informe quantos números pares, quantos números ímpares, quantos números positivos e quantos números negativos foram digitados pelo usuário. O programa só deve parar de rodar quando o usuário responder "S" na seguinte pergunta, "Deseja encerrar o programa?".)
 public class JarraEx5_9 {
 
 	public static void main(String[] args) {
