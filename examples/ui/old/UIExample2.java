@@ -1,4 +1,4 @@
-package ui;
+package ui.old;
 
 import java.awt.Color;
 import java.awt.Container; //Container is responsible for the background and for enabling the layouts
